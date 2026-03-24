@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { SaleFAQ } from "@/components/ui/SaleFAQ";
+import { SupportChat } from "@/components/ui/SupportChat";
 
 export const metadata = {
   title: "Steward Wealth | เริ่มต้นลงทุนเพื่ออนาคต",
@@ -56,6 +58,7 @@ const testimonials = [
     name: "คุณสมชาย วรรณภิรมย์",
     age: "62 ปี",
     role: "อดีตข้าราชการ",
+    avatar: "/testimonials/avatar-1.png",
     quote:
       "ตอนแรกกังวลมาก กลัวสูญเงิน แต่พอลองใช้ครบ 1 ปี ได้ผลตอบแทน 8.2% โดยที่แทบไม่ต้องทำอะไรเลย ตอนนี้แนะนำให้เพื่อนๆ ทุกคน",
     returnValue: "+8.2%",
@@ -64,6 +67,7 @@ const testimonials = [
     name: "คุณนภาพร กมลรัตน์",
     age: "58 ปี",
     role: "แม่บ้านและนักลงทุน",
+    avatar: "/testimonials/avatar-2.png",
     quote:
       "ลูกสาวแนะนำให้ลองใช้ ตอนแรกไม่เชื่อ แต่ตอนนี้ได้ดอกเบี้ยมากกว่าธนาคารเกือบ 5 เท่า โทรถามทีมงานได้ตลอด พูดกันรู้เรื่อง",
     returnValue: "+7.8%",
@@ -72,6 +76,7 @@ const testimonials = [
     name: "คุณวิชัย มงคลศิริ",
     age: "65 ปี",
     role: "อดีตเจ้าของธุรกิจ",
+    avatar: "/testimonials/avatar-3.png",
     quote:
       "เอาเงินเกษียณมาลงทุน ตอนนี้มีรายได้ passive ทุกเดือน ชีวิตหลังเกษียณสบายขึ้นมาก ไม่ต้องกังวลเรื่องเงินอีกแล้ว",
     returnValue: "+9.1%",
@@ -112,7 +117,7 @@ export default function SalePage() {
               02-123-4567
             </a>
             <a
-              href="/register"
+              href="/dashboard"
               className="rounded-full bg-primary px-6 py-3 text-base font-semibold text-on-primary shadow-sm hover:bg-primary-dim"
             >
               เริ่มต้นเลย
@@ -343,11 +348,20 @@ export default function SalePage() {
                 className="rounded-2xl border border-outline-variant bg-white p-8"
               >
                 <div className="mb-5 flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-lg font-semibold text-on-surface">{t.name}</p>
-                    <p className="text-base text-on-surface-variant">
-                      {t.age} · {t.role}
-                    </p>
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={t.avatar}
+                      alt={t.name}
+                      width={48}
+                      height={48}
+                      className="rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="text-lg font-semibold text-on-surface">{t.name}</p>
+                      <p className="text-base text-on-surface-variant">
+                        {t.age} · {t.role}
+                      </p>
+                    </div>
                   </div>
                   <span className="shrink-0 rounded-full bg-secondary-container px-3 py-1 font-mono text-lg font-bold tabular-nums text-secondary">
                     {t.returnValue}
@@ -423,6 +437,8 @@ export default function SalePage() {
           </div>
         </div>
       </footer>
+
+      <SupportChat />
     </div>
   );
 }
