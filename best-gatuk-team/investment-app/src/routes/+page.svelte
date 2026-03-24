@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import {
 		holdings,
 		totalNAV,
@@ -335,7 +336,10 @@
 							{@const gl = h.units * h.currentPrice - h.units * h.avgCost}
 							{@const glPct = (gl / (h.units * h.avgCost)) * 100}
 							{@const weight = (mv / nav) * 100}
-							<tr class="border-b border-periwinkle-50 dark:border-dark-border/50 hover:bg-periwinkle-50/60 dark:hover:bg-dark-card-alt/60 transition-colors">
+							<tr
+								onclick={() => goto(`/portfolio/${h.id}`)}
+								class="border-b border-periwinkle-50 dark:border-dark-border/50 hover:bg-periwinkle-50/60 dark:hover:bg-dark-card-alt/60 transition-colors cursor-pointer"
+							>
 								<td class="px-6 py-4">
 									<div class="font-semibold text-navy dark:text-white">{h.name}</div>
 									<div class="text-xs text-navy-light/50 dark:text-slate-500 mt-0.5">{h.ticker} · {fmt(weight, 1)}% · {h.expectedReturn}</div>
@@ -379,7 +383,13 @@
 					{@const gl = h.units * h.currentPrice - h.units * h.avgCost}
 					{@const glPct = (gl / (h.units * h.avgCost)) * 100}
 					{@const weight = (mv / nav) * 100}
-					<div class="p-4 space-y-3">
+					<div
+					class="p-4 space-y-3 cursor-pointer hover:bg-periwinkle-50/60 dark:hover:bg-dark-card-alt/40 transition-colors"
+					onclick={() => goto(`/portfolio/${h.id}`)}
+					role="button"
+					tabindex="0"
+					onkeydown={(e) => e.key === 'Enter' && goto(`/portfolio/${h.id}`)}
+				>
 						<div class="flex items-start justify-between gap-2">
 							<div>
 								<div class="font-semibold text-navy dark:text-white text-sm">{h.name}</div>
