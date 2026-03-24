@@ -19,9 +19,9 @@ function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null
   const d: NAVDataPoint = payload[0].payload
   return (
-    <div className="bg-brand-navyMid border border-brand-navyLight rounded-xl px-4 py-3 shadow-xl text-sm">
+    <div className="bg-brand-surface border border-brand-border rounded-xl px-4 py-3 shadow-lg text-sm">
       <p className="text-brand-muted mb-1">{formatDate(label)}</p>
-      <p className="text-white font-bold tabnum">NAV {d.nav.toFixed(4)}</p>
+      <p className="text-brand-text font-bold tabnum">NAV {d.nav.toFixed(4)}</p>
       <p className={d.change >= 0 ? 'text-brand-green' : 'text-brand-red'}>
         {d.change >= 0 ? '+' : ''}{d.change.toFixed(4)} ({d.change >= 0 ? '+' : ''}{d.changePercent.toFixed(2)}%)
       </p>
@@ -38,7 +38,7 @@ export function NAVLineChart({ data, fundName }: NAVLineChartProps) {
   }, [data, range])
 
   const isPositive = sliced.length > 1 && sliced[sliced.length - 1].nav >= sliced[0].nav
-  const color = isPositive ? '#00C896' : '#E84545'
+  const color = isPositive ? '#059669' : '#DC2626'
 
   const minNav = Math.min(...sliced.map(d => d.nav))
   const maxNav = Math.max(...sliced.map(d => d.nav))
@@ -54,8 +54,8 @@ export function NAVLineChart({ data, fundName }: NAVLineChartProps) {
             onClick={() => setRange(r)}
             className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
               range === r
-                ? 'bg-brand-green/20 text-brand-green'
-                : 'text-brand-muted hover:text-white hover:bg-brand-navyLight'
+                ? 'bg-brand-green/10 text-brand-green'
+                : 'text-brand-muted hover:text-brand-text hover:bg-brand-border'
             }`}
           >
             {r}
@@ -66,16 +66,16 @@ export function NAVLineChart({ data, fundName }: NAVLineChartProps) {
         <AreaChart data={sliced} margin={{ top: 5, right: 5, bottom: 0, left: 0 }}>
           <defs>
             <linearGradient id={`navGrad-${fundName ?? 'main'}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={color} stopOpacity={0.25} />
+              <stop offset="0%" stopColor={color} stopOpacity={0.15} />
               <stop offset="100%" stopColor={color} stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1A3057" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#DDE6F0" vertical={false} />
           <XAxis
             dataKey="date"
             tickLine={false}
             axisLine={false}
-            tick={{ fill: '#6B8099', fontSize: 11 }}
+            tick={{ fill: '#94A3B8', fontSize: 11 }}
             interval="preserveStartEnd"
             tickFormatter={v => v.slice(5)}
           />
@@ -83,7 +83,7 @@ export function NAVLineChart({ data, fundName }: NAVLineChartProps) {
             domain={[minNav - padding, maxNav + padding]}
             tickLine={false}
             axisLine={false}
-            tick={{ fill: '#6B8099', fontSize: 11 }}
+            tick={{ fill: '#94A3B8', fontSize: 11 }}
             tickFormatter={v => v.toFixed(2)}
             width={52}
           />

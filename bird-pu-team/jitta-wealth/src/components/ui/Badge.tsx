@@ -1,12 +1,12 @@
 type Variant = 'green' | 'red' | 'gold' | 'muted' | 'blue' | 'purple'
 
 const styles: Record<Variant, string> = {
-  green: 'bg-brand-green/15 text-brand-green',
-  red: 'bg-brand-red/15 text-brand-red',
-  gold: 'bg-brand-gold/15 text-brand-gold',
-  muted: 'bg-brand-navyLight text-brand-muted',
-  blue: 'bg-blue-500/15 text-blue-400',
-  purple: 'bg-purple-500/15 text-purple-400',
+  green: 'bg-brand-green/10 text-brand-green',
+  red: 'bg-brand-red/10 text-brand-red',
+  gold: 'bg-brand-gold/10 text-brand-gold',
+  muted: 'bg-slate-100 text-brand-muted',
+  blue: 'bg-blue-50 text-blue-600',
+  purple: 'bg-purple-50 text-purple-600',
 }
 
 interface BadgeProps {

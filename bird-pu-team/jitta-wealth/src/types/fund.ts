@@ -2,7 +2,7 @@ export interface Fund {
   id: string
   name: string
   shortName: string
-  category: 'global-equity' | 'thai-equity' | 'fixed-income' | 'mixed'
+  category: 'money' | 'omni' | 'global-etf' | 'thematic' | 'ranking'
   riskLevel: 1 | 2 | 3 | 4 | 5
   nav: number
   navDate: string

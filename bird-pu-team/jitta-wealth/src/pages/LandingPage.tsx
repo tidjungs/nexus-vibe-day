@@ -14,7 +14,7 @@ const features = [
   {
     icon: Shield,
     title: 'Risk-Managed',
-    desc: 'Diversified funds across global markets, sectors, and risk profiles. Your capital is protected by SEC oversight.',
+    desc: 'Diversified funds across global markets, sectors, and risk profiles. Protected by SEC oversight.',
   },
   {
     icon: BarChart2,
@@ -24,7 +24,7 @@ const features = [
   {
     icon: Zap,
     title: 'Start with ฿1,000',
-    desc: 'Accessible investing for everyone. Start with as little as ฿1,000 and grow at your own pace.',
+    desc: 'Accessible investing for everyone. Start small and grow at your own pace.',
   },
 ]
 
@@ -39,20 +39,20 @@ export function LandingPage() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-brand-navy">
+    <div className="min-h-screen bg-brand-bg">
       {/* Top Nav */}
-      <header className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 border-b border-brand-navyLight bg-brand-navy/80 backdrop-blur-md">
+      <header className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 border-b border-brand-border bg-white/90 backdrop-blur-md shadow-sm">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-brand-green flex items-center justify-center">
-            <span className="text-brand-navy font-black text-sm">J</span>
+            <span className="text-white font-black text-sm">J</span>
           </div>
           <div>
-            <span className="text-white font-bold text-sm">Jitta</span>
+            <span className="text-brand-text font-bold text-sm">Jitta</span>
             <span className="text-brand-muted text-sm"> Wealth</span>
           </div>
         </div>
-        <Button variant="secondary" size="sm" onClick={() => navigate(ROUTES.DASHBOARD)}>
-          Sign In
+        <Button variant="primary" size="sm" onClick={() => navigate(ROUTES.DASHBOARD)}>
+          Open Dashboard
         </Button>
       </header>
 
@@ -62,7 +62,7 @@ export function LandingPage() {
           <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
           Live NAV updates available
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-brand-text leading-tight mb-6">
           Invest in
           <span className="text-brand-green"> Quality Companies </span>
           with Confidence
@@ -89,13 +89,13 @@ export function LandingPage() {
       </section>
 
       {/* Live NAV Strip */}
-      <section className="border-y border-brand-navyLight bg-brand-navyMid py-6 overflow-x-auto">
-        <div className="flex gap-6 px-6 min-w-max">
+      <section className="border-y border-brand-border bg-white py-6 overflow-x-auto shadow-sm">
+        <div className="flex gap-4 px-6 min-w-max">
           {funds.map(f => (
-            <div key={f.id} className="flex items-center gap-3 px-4 py-3 bg-brand-surface rounded-xl border border-brand-navyLight">
+            <div key={f.id} className="flex items-center gap-3 px-4 py-3 bg-brand-bg rounded-xl border border-brand-border">
               <div>
                 <p className="text-brand-muted text-xs">{f.shortName}</p>
-                <p className="text-white font-bold tabnum">฿{f.nav.toFixed(4)}</p>
+                <p className="text-brand-text font-bold tabnum">฿{f.nav.toFixed(4)}</p>
               </div>
               <NAVBadge value={f.dailyChangePercent} />
             </div>
@@ -105,17 +105,17 @@ export function LandingPage() {
 
       {/* Features */}
       <section className="px-6 py-20 max-w-5xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-3">
+        <h2 className="text-2xl md:text-3xl font-bold text-brand-text text-center mb-3">
           Why Jitta Wealth?
         </h2>
         <p className="text-brand-muted text-center mb-12">Built for the modern investor. Powered by data.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {features.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="card hover:border-brand-green/30 transition-colors">
+            <div key={title} className="card hover:border-brand-green/40 hover:shadow-md transition-all">
               <div className="w-10 h-10 rounded-xl bg-brand-green/10 flex items-center justify-center mb-4">
                 <Icon size={20} className="text-brand-green" />
               </div>
-              <h3 className="text-white font-semibold mb-2">{title}</h3>
+              <h3 className="text-brand-text font-semibold mb-2">{title}</h3>
               <p className="text-brand-muted text-sm leading-relaxed">{desc}</p>
             </div>
           ))}
@@ -124,8 +124,11 @@ export function LandingPage() {
 
       {/* CTA */}
       <section className="px-6 py-16 text-center">
-        <div className="max-w-2xl mx-auto bg-gradient-to-br from-brand-navyMid to-brand-surface border border-brand-navyLight rounded-3xl p-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+        <div className="max-w-2xl mx-auto bg-white border border-brand-border rounded-3xl p-10 shadow-sm">
+          <div className="w-14 h-14 rounded-2xl bg-brand-green/10 flex items-center justify-center mx-auto mb-6">
+            <TrendingUp size={28} className="text-brand-green" />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-4">
             Start investing today
           </h2>
           <p className="text-brand-muted mb-8">
@@ -138,7 +141,7 @@ export function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 py-8 border-t border-brand-navyLight text-center text-brand-muted text-xs">
+      <footer className="px-6 py-8 border-t border-brand-border text-center text-brand-muted text-xs">
         <p>© 2026 Jitta Wealth Co., Ltd. · Regulated by the SEC Thailand · Past performance is not indicative of future results.</p>
       </footer>
     </div>

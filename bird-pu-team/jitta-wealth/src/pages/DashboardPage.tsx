@@ -6,7 +6,7 @@ import { AllocationDonut } from '@/components/charts/AllocationDonut'
 import { PerformanceBar } from '@/components/charts/PerformanceBar'
 import { portfolio } from '@/data/portfolio'
 import { funds } from '@/data/funds'
-import { jgefHistory } from '@/data/navHistory'
+import { rankingHistory } from '@/data/navHistory'
 import { formatDate } from '@/utils/formatters'
 
 const performanceData = [
@@ -32,14 +32,14 @@ export function DashboardPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white hidden lg:block">Dashboard</h1>
+          <h1 className="text-xl font-bold text-brand-text hidden lg:block">Dashboard</h1>
           <p className="text-brand-muted text-xs">As of {formatDate(portfolio.lastUpdated.slice(0, 10))}</p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="p-2 rounded-xl text-brand-muted hover:text-white hover:bg-brand-navyLight transition-colors">
+          <button className="p-2 rounded-xl text-brand-muted hover:text-brand-text hover:bg-brand-border transition-colors">
             <RefreshCw size={16} />
           </button>
-          <button className="p-2 rounded-xl text-brand-muted hover:text-white hover:bg-brand-navyLight transition-colors relative">
+          <button className="p-2 rounded-xl text-brand-muted hover:text-brand-text hover:bg-brand-border transition-colors relative">
             <Bell size={16} />
             <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-brand-green rounded-full" />
           </button>
@@ -61,22 +61,19 @@ export function DashboardPage() {
 
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* NAV Line */}
         <div className="lg:col-span-2 card">
-          <h2 className="text-sm font-semibold text-white mb-4">JGEF NAV History</h2>
-          <NAVLineChart data={jgefHistory} />
+          <h2 className="text-sm font-semibold text-brand-text mb-4">Jitta Ranking — NAV History</h2>
+          <NAVLineChart data={rankingHistory} />
         </div>
-
-        {/* Allocation */}
         <div className="card">
-          <h2 className="text-sm font-semibold text-white mb-4">Portfolio Allocation</h2>
+          <h2 className="text-sm font-semibold text-brand-text mb-4">Portfolio Allocation</h2>
           <AllocationDonut data={allocationData} />
         </div>
       </div>
 
-      {/* Performance Bar */}
+      {/* Performance */}
       <div className="card">
-        <h2 className="text-sm font-semibold text-white mb-4">Monthly Portfolio Return</h2>
+        <h2 className="text-sm font-semibold text-brand-text mb-4">Monthly Portfolio Return</h2>
         <PerformanceBar data={performanceData} />
       </div>
     </div>

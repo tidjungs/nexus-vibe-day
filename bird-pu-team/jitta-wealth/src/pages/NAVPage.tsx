@@ -6,14 +6,14 @@ import { funds } from '@/data/funds'
 import { historyByFund } from '@/data/navHistory'
 
 export function NAVPage() {
-  const [selectedId, setSelectedId] = useState('JGEF')
+  const [selectedId, setSelectedId] = useState('RANKING')
   const selectedFund = funds.find(f => f.id === selectedId) ?? funds[0]
   const history = historyByFund[selectedId] ?? []
 
   return (
     <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-white hidden lg:block mb-1">NAV History</h1>
+        <h1 className="text-xl font-bold text-brand-text hidden lg:block mb-1">NAV History</h1>
         <p className="text-brand-muted text-sm">Track fund net asset values over time</p>
       </div>
 
@@ -25,8 +25,8 @@ export function NAVPage() {
             onClick={() => setSelectedId(f.id)}
             className={`px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
               selectedId === f.id
-                ? 'bg-brand-green text-brand-navy'
-                : 'bg-brand-surface border border-brand-navyLight text-brand-muted hover:text-white'
+                ? 'bg-brand-green text-white shadow-sm'
+                : 'bg-brand-surface border border-brand-border text-brand-muted hover:text-brand-text hover:border-brand-green'
             }`}
           >
             {f.shortName}
@@ -39,13 +39,13 @@ export function NAVPage() {
 
       {/* Chart */}
       <div className="card">
-        <h2 className="text-sm font-semibold text-white mb-4">{selectedFund.name} — NAV Chart</h2>
+        <h2 className="text-sm font-semibold text-brand-text mb-4">{selectedFund.name} — NAV Chart</h2>
         <NAVLineChart data={history} />
       </div>
 
       {/* Table */}
       <div className="card">
-        <h2 className="text-sm font-semibold text-white mb-5">Historical Data</h2>
+        <h2 className="text-sm font-semibold text-brand-text mb-5">Historical Data</h2>
         <NAVHistoryTable data={history} />
       </div>
     </div>

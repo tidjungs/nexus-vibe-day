@@ -6,7 +6,7 @@
 
 @layer base {
   html, body, #root {
-    @apply bg-brand-navy text-white;
+    @apply bg-brand-bg text-brand-text;
     font-family: 'Inter', system-ui, sans-serif;
     min-height: 100%;
     margin: 0;
@@ -15,13 +15,13 @@
     box-sizing: border-box;
   }
   ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { @apply bg-brand-navy; }
-  ::-webkit-scrollbar-thumb { @apply bg-brand-navyLight rounded-full; }
+  ::-webkit-scrollbar-track { @apply bg-brand-bg; }
+  ::-webkit-scrollbar-thumb { @apply bg-brand-border rounded-full; }
 }
 
 @layer utilities {
   .text-positive { @apply text-brand-green; }
   .text-negative { @apply text-brand-red; }
-  .card { @apply bg-brand-surface border border-brand-navyLight rounded-2xl p-5; }
+  .card { @apply bg-brand-surface border border-brand-border rounded-2xl p-5 shadow-sm; }
   .tabnum { font-variant-numeric: tabular-nums; }
 }

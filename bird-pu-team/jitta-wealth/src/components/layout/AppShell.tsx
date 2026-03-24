@@ -17,7 +17,7 @@ export function AppShell() {
   const { pathname } = useLocation()
 
   return (
-    <div className="flex h-screen bg-brand-navy overflow-hidden">
+    <div className="flex h-screen bg-brand-bg overflow-hidden">
       {/* Desktop sidebar */}
       <div className="hidden lg:flex w-60 flex-shrink-0">
         <div className="w-full">
@@ -28,7 +28,7 @@ export function AppShell() {
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-black/60" onClick={() => setSidebarOpen(false)} />
+          <div className="absolute inset-0 bg-black/40" onClick={() => setSidebarOpen(false)} />
           <div className="absolute left-0 top-0 bottom-0 w-60 z-50">
             <Sidebar onClose={() => setSidebarOpen(false)} />
           </div>

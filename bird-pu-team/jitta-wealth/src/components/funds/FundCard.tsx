@@ -5,10 +5,11 @@ import { NAVBadge } from '@/components/nav/NAVBadge'
 import { formatTHB, formatNAV } from '@/utils/formatters'
 
 const categoryLabel: Record<Fund['category'], string> = {
-  'global-equity': 'Global Equity',
-  'thai-equity': 'Thai Equity',
-  'fixed-income': 'Fixed Income',
-  mixed: 'Balanced',
+  money: 'Jitta Money',
+  omni: 'Omni Fund',
+  'global-etf': 'Global ETF',
+  thematic: 'Thematic',
+  ranking: 'Jitta Ranking',
 }
 
 const riskColors = ['', 'green', 'green', 'gold', 'gold', 'red'] as const
@@ -22,11 +23,11 @@ export function FundCard({ fund, onClick }: FundCardProps) {
   return (
     <button
       onClick={() => onClick(fund)}
-      className="card text-left w-full hover:border-brand-green/50 hover:bg-brand-navyMid transition-all duration-150 group"
+      className="card text-left w-full hover:border-brand-green/60 hover:shadow-md transition-all duration-150 group"
     >
       <div className="flex items-start justify-between gap-2 mb-3">
         <div className="flex-1 min-w-0">
-          <p className="text-white font-semibold text-sm truncate">{fund.name}</p>
+          <p className="text-brand-text font-semibold text-sm truncate">{fund.name}</p>
           <div className="flex items-center gap-2 mt-1">
             <Badge variant="muted">{categoryLabel[fund.category]}</Badge>
             <Badge variant={riskColors[fund.riskLevel]}>Risk {fund.riskLevel}</Badge>
@@ -37,11 +38,11 @@ export function FundCard({ fund, onClick }: FundCardProps) {
       <div className="flex items-end justify-between gap-2">
         <div>
           <p className="text-xs text-brand-muted mb-0.5">NAV (THB)</p>
-          <p className="text-xl font-bold text-white tabnum">฿{formatNAV(fund.nav)}</p>
+          <p className="text-xl font-bold text-brand-text tabnum">฿{formatNAV(fund.nav)}</p>
         </div>
         <NAVBadge value={fund.dailyChangePercent} />
       </div>
-      <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-brand-navyLight">
+      <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-brand-border">
         <div>
           <p className="text-xs text-brand-muted mb-0.5">YTD</p>
           <p className={`text-sm font-semibold tabnum ${fund.ytdReturn >= 0 ? 'text-brand-green' : 'text-brand-red'}`}>
@@ -56,7 +57,7 @@ export function FundCard({ fund, onClick }: FundCardProps) {
         </div>
         <div>
           <p className="text-xs text-brand-muted mb-0.5">Min Invest</p>
-          <p className="text-sm font-medium text-white tabnum">{formatTHB(fund.minInvestment, true)}</p>
+          <p className="text-sm font-medium text-brand-text tabnum">{formatTHB(fund.minInvestment, true)}</p>
         </div>
       </div>
     </button>

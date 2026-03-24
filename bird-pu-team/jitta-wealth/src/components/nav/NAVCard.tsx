@@ -20,7 +20,7 @@ export function NAVCard({ fund, large }: NAVCardProps) {
       </div>
       <p className="text-brand-muted text-xs truncate">{fund.name}</p>
       <div className="flex items-end justify-between gap-2 mt-1">
-        <p className={`font-bold tabnum ${large ? 'text-4xl' : 'text-2xl'} text-white`}>
+        <p className={`font-bold tabnum ${large ? 'text-4xl' : 'text-2xl'} text-brand-text`}>
           ฿{formatNAV(fund.nav)}
         </p>
         <div className={`flex items-center gap-1 text-sm font-semibold tabnum ${changeClass(fund.dailyChange)}`}>

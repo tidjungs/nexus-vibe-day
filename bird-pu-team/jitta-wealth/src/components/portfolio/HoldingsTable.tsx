@@ -14,7 +14,7 @@ export function HoldingsTable({ holdings, funds }: HoldingsTableProps) {
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="text-left text-brand-muted border-b border-brand-navyLight">
+          <tr className="text-left text-brand-muted border-b border-brand-border">
             <th className="pb-3 font-medium">Fund</th>
             <th className="pb-3 font-medium text-right tabnum">Units</th>
             <th className="pb-3 font-medium text-right tabnum hidden sm:table-cell">Avg Cost</th>
@@ -32,17 +32,17 @@ export function HoldingsTable({ holdings, funds }: HoldingsTableProps) {
             const pnl = value - cost
             const pnlPct = (pnl / cost) * 100
             return (
-              <tr key={h.fundId} className="border-b border-brand-navyLight/50 hover:bg-brand-navyLight/20 transition-colors">
+              <tr key={h.fundId} className="border-b border-brand-border hover:bg-brand-bg transition-colors">
                 <td className="py-3.5">
-                  <p className="text-white font-medium">{fund?.shortName ?? h.fundId}</p>
+                  <p className="text-brand-text font-medium">{fund?.shortName ?? h.fundId}</p>
                   <p className="text-brand-muted text-xs truncate max-w-[140px]">{fund?.name}</p>
                 </td>
-                <td className="py-3.5 text-right tabnum text-white">{formatUnits(h.units)}</td>
+                <td className="py-3.5 text-right tabnum text-brand-text">{formatUnits(h.units)}</td>
                 <td className="py-3.5 text-right tabnum text-brand-muted hidden sm:table-cell">
                   {h.averageCostPerUnit.toFixed(4)}
                 </td>
-                <td className="py-3.5 text-right tabnum text-white">{h.currentNav.toFixed(4)}</td>
-                <td className="py-3.5 text-right tabnum text-white font-medium">{formatTHB(value)}</td>
+                <td className="py-3.5 text-right tabnum text-brand-text">{h.currentNav.toFixed(4)}</td>
+                <td className="py-3.5 text-right tabnum text-brand-text font-medium">{formatTHB(value)}</td>
                 <td className={`py-3.5 text-right tabnum hidden md:table-cell ${changeClass(pnl)}`}>
                   {pnl >= 0 ? '+' : ''}{formatTHB(pnl)} ({pnl >= 0 ? '+' : ''}{pnlPct.toFixed(2)}%)
                 </td>

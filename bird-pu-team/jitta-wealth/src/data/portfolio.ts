@@ -2,34 +2,37 @@ import type { Portfolio } from '@/types/portfolio'
 
 export const portfolio: Portfolio = {
   id: 'port-001',
-  totalValue: 512_840.50,
+  totalValue: 524_318.75,
   totalInvested: 450_000.00,
-  unrealizedPnL: 62_840.50,
-  unrealizedPnLPercent: 13.96,
-  dailyChange: 2_134.20,
-  dailyChangePercent: 0.42,
+  unrealizedPnL: 74_318.75,
+  unrealizedPnLPercent: 16.52,
+  dailyChange: 2_341.80,
+  dailyChangePercent: 0.45,
   lastUpdated: '2026-03-21T16:00:00+07:00',
   holdings: [
     {
-      fundId: 'JGEF',
-      units: 14_820.5,
-      averageCostPerUnit: 15.32,
-      currentNav: 18.4732,
-      allocationPercent: 53.4,
+      // Jitta Ranking — high conviction, highest allocation
+      fundId: 'RANKING',
+      units: 14_250.0,
+      averageCostPerUnit: 15.80,
+      currentNav: 19.4561,
+      allocationPercent: 52.9,
     },
     {
-      fundId: 'JTQF',
-      units: 12_200.0,
-      averageCostPerUnit: 13.10,
-      currentNav: 14.2150,
-      allocationPercent: 33.8,
+      // Global ETF — core diversified position
+      fundId: 'GETF',
+      units: 18_500.0,
+      averageCostPerUnit: 12.40,
+      currentNav: 14.5231,
+      allocationPercent: 51.2,
     },
     {
-      fundId: 'JIP',
-      units: 11_450.0,
-      averageCostPerUnit: 10.95,
-      currentNav: 11.0821,
-      allocationPercent: 12.8,
+      // Jitta Money — cash parking / low risk buffer
+      fundId: 'JMONEY',
+      units: 50_000.0,
+      averageCostPerUnit: 10.55,
+      currentNav: 10.8342,
+      allocationPercent: 10.3,
     },
   ],
 }

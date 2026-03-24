@@ -3,10 +3,13 @@ import type { NAVDataPoint } from '@/types/nav'
 function generateNAVHistory(
   baseNav: number,
   days: number,
-  volatility: number
+  volatility: number,
+  annualDrift: number,
 ): NAVDataPoint[] {
   const points: NAVDataPoint[] = []
-  let nav = baseNav - (Math.random() * 3 + 1)
+  // Start from a lower NAV and grow toward baseNav
+  const dailyDrift = annualDrift / 252
+  let nav = baseNav * 0.78
   const now = new Date('2026-03-21')
 
   for (let i = days; i >= 0; i--) {
@@ -15,32 +18,40 @@ function generateNAVHistory(
     const dayOfWeek = d.getDay()
     if (dayOfWeek === 0 || dayOfWeek === 6) continue
 
-    const change = (Math.random() - 0.48) * volatility
-    nav = Math.max(nav + change, baseNav * 0.5)
-    const prevNav = nav - change
-    const changeAmount = nav - prevNav
-    const changePercent = (changeAmount / prevNav) * 100
+    const shock = (Math.random() - 0.48) * volatility
+    const change = nav * (dailyDrift + shock)
+    nav = Math.max(nav + change, 1)
+    const changePercent = (change / (nav - change)) * 100
 
     points.push({
       date: d.toISOString().slice(0, 10),
       nav: Math.round(nav * 10000) / 10000,
-      change: Math.round(changeAmount * 10000) / 10000,
+      change: Math.round(change * 10000) / 10000,
       changePercent: Math.round(changePercent * 100) / 100,
     })
   }
   return points
 }
 
-export const jgefHistory = generateNAVHistory(18.4732, 365, 0.18)
-export const jtqfHistory = generateNAVHistory(14.2150, 365, 0.14)
-export const jipHistory = generateNAVHistory(11.0821, 365, 0.03)
-export const jbfHistory = generateNAVHistory(12.6540, 365, 0.10)
-export const juseHistory = generateNAVHistory(22.1345, 365, 0.22)
+// Jitta Money — very low volatility, T-bill returns
+export const jmoneyHistory = generateNAVHistory(10.8342, 730, 0.0015, 0.0367)
+
+// Omni Fund — moderate volatility, balanced global
+export const omniHistory = generateNAVHistory(12.8850, 730, 0.008, 0.0788)
+
+// Global ETF — moderate-high volatility, global equity
+export const getfHistory = generateNAVHistory(14.5231, 730, 0.012, 0.0997)
+
+// Thematic Optimize — high volatility, mega-trend sectors
+export const thematicHistory = generateNAVHistory(11.2740, 365, 0.022, 0.1532)
+
+// Jitta Ranking — highest volatility, stock picking
+export const rankingHistory = generateNAVHistory(19.4561, 730, 0.018, 0.2415)
 
 export const historyByFund: Record<string, NAVDataPoint[]> = {
-  JGEF: jgefHistory,
-  JTQF: jtqfHistory,
-  JIP: jipHistory,
-  JBF: jbfHistory,
-  JUSE: juseHistory,
+  JMONEY: jmoneyHistory,
+  OMNI: omniHistory,
+  GETF: getfHistory,
+  THEMATIC: thematicHistory,
+  RANKING: rankingHistory,
 }

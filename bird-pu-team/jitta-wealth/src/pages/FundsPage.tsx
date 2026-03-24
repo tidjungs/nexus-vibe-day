@@ -8,11 +8,12 @@ import { funds } from '@/data/funds'
 type Category = 'all' | Fund['category']
 
 const categories: { value: Category; label: string }[] = [
-  { value: 'all', label: 'All Funds' },
-  { value: 'global-equity', label: 'Global Equity' },
-  { value: 'thai-equity', label: 'Thai Equity' },
-  { value: 'fixed-income', label: 'Fixed Income' },
-  { value: 'mixed', label: 'Balanced' },
+  { value: 'all', label: 'All' },
+  { value: 'money', label: 'Jitta Money' },
+  { value: 'omni', label: 'Omni Fund' },
+  { value: 'global-etf', label: 'Global ETF' },
+  { value: 'thematic', label: 'Thematic' },
+  { value: 'ranking', label: 'Jitta Ranking' },
 ]
 
 export function FundsPage() {
@@ -29,7 +30,7 @@ export function FundsPage() {
   return (
     <div className="p-4 md:p-6 max-w-7xl mx-auto">
       <div className="mb-6">
-        <h1 className="text-xl font-bold text-white hidden lg:block mb-1">Funds</h1>
+        <h1 className="text-xl font-bold text-brand-text hidden lg:block mb-1">Funds</h1>
         <p className="text-brand-muted text-sm">Explore all Jitta Wealth investment funds</p>
       </div>
 
@@ -40,7 +41,7 @@ export function FundsPage() {
           value={query}
           onChange={e => setQuery(e.target.value)}
           placeholder="Search funds..."
-          className="w-full bg-brand-surface border border-brand-navyLight rounded-xl pl-9 pr-4 py-2.5 text-sm text-white placeholder:text-brand-muted focus:outline-none focus:border-brand-green transition-colors"
+          className="w-full bg-brand-surface border border-brand-border rounded-xl pl-9 pr-4 py-2.5 text-sm text-brand-text placeholder:text-brand-muted focus:outline-none focus:border-brand-green transition-colors shadow-sm"
         />
       </div>
 
@@ -52,8 +53,8 @@ export function FundsPage() {
             onClick={() => setCategory(c.value)}
             className={`px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
               category === c.value
-                ? 'bg-brand-green text-brand-navy'
-                : 'bg-brand-surface border border-brand-navyLight text-brand-muted hover:text-white'
+                ? 'bg-brand-green text-white shadow-sm'
+                : 'bg-brand-surface border border-brand-border text-brand-muted hover:text-brand-text hover:border-brand-green'
             }`}
           >
             {c.label}

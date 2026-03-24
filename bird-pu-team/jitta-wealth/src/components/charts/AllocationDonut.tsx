@@ -1,7 +1,7 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
 import { formatTHB, formatPercent } from '@/utils/formatters'
 
-const COLORS = ['#00C896', '#3B82F6', '#F5A623', '#A855F7', '#E84545', '#06B6D4']
+const COLORS = ['#059669', '#2563EB', '#D97706', '#7C3AED', '#DC2626', '#0891B2']
 
 interface AllocationItem {
   name: string
@@ -18,8 +18,8 @@ function CustomTooltip({ active, payload }: any) {
   if (!active || !payload?.length) return null
   const d = payload[0].payload as AllocationItem
   return (
-    <div className="bg-brand-navyMid border border-brand-navyLight rounded-xl px-4 py-3 shadow-xl text-sm">
-      <p className="text-white font-medium">{d.name}</p>
+    <div className="bg-brand-surface border border-brand-border rounded-xl px-4 py-3 shadow-lg text-sm">
+      <p className="text-brand-text font-medium">{d.name}</p>
       <p className="text-brand-muted tabnum">{formatTHB(d.value)}</p>
       <p className="text-brand-green tabnum">{formatPercent(d.percent, 1)}</p>
     </div>
@@ -54,10 +54,10 @@ export function AllocationDonut({ data }: AllocationDonutProps) {
           <div key={item.name} className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 min-w-0">
               <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
-              <span className="text-sm text-white truncate">{item.name}</span>
+              <span className="text-sm text-brand-text truncate">{item.name}</span>
             </div>
             <div className="text-right flex-shrink-0">
-              <span className="text-sm font-medium text-white tabnum">{item.percent.toFixed(1)}%</span>
+              <span className="text-sm font-medium text-brand-text tabnum">{item.percent.toFixed(1)}%</span>
             </div>
           </div>
         ))}
