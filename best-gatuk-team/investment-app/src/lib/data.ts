@@ -147,10 +147,10 @@ export function allocationByClass(hs: Holding[]) {
 }
 
 export const assetClassColors: Record<AssetClass, string> = {
-	Equity: '#6366f1',
-	'Fixed Income': '#22d3ee',
+	Equity: '#3b5bff',
+	'Fixed Income': '#06b6d4',
 	Alternatives: '#f59e0b',
-	Cash: '#34d399'
+	Cash: '#22c55e'
 };
 
 export function fmt(n: number, decimals = 2) {

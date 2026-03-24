@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+	--color-periwinkle-50: #f0f2ff;
+	--color-periwinkle-100: #e8edff;
+	--color-periwinkle-200: #d4dbff;
+	--color-periwinkle-300: #b3bfff;
+	--color-vivid-blue: #3b5bff;
+	--color-vivid-blue-dark: #2a45d9;
+	--color-vivid-blue-light: #5a75ff;
+	--color-neon-green: #aaff00;
+	--color-neon-green-dark: #8ad600;
+	--color-navy: #0f1a3e;
+	--color-navy-light: #1e2d5a;
+}
