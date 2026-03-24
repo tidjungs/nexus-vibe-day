@@ -123,4 +123,4 @@ npm run build
 |---|---|
 | `/portfolios` | Aggregate dashboard — total AUM, daily change, stats bar (unrealized G/L, cash, best/worst today), aggregate NAV area chart, portfolio card grid, cross-portfolio allocation pie, top holdings table |
 | `/portfolios/[id]` | Portfolio detail — NAV header, performance metrics, interactive NAV chart with benchmark overlay and time-range controls, allocation pie, full holdings table, portfolio switcher dropdown |
-| `/market` | Market overview — indices, movers, sectors, news (sidebar link present; page implementation pending) |
+| `/market` | Market overview — indices bar (S&P 500, NASDAQ, DOW, VIX), top gainers/losers, sector performance bar chart, market news headlines |
