@@ -74,13 +74,13 @@ export default function PortfoliosPage() {
 
   return (
     <div className="min-h-screen bg-[#0D1117] text-white">
-      <div className="max-w-6xl mx-auto px-6 py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
         {/* Header */}
         <div className="mb-8">
           <p className="text-[#8b949e] text-sm font-medium uppercase tracking-widest mb-1">
             Total Assets Under Management
           </p>
-          <h1 className="text-5xl font-bold tabular-nums mb-2">{fmt(total)}</h1>
+          <h1 className="text-3xl sm:text-5xl font-bold tabular-nums mb-2">{fmt(total)}</h1>
           <div className="flex items-center gap-2">
             <span
               className={`text-lg font-semibold tabular-nums ${

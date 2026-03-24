@@ -34,9 +34,9 @@ export default function TopHoldingsTable({ holdings, totalNav }: Props) {
           <thead>
             <tr className="border-b border-[#21262d]">
               <th className="px-4 py-3 text-left text-[#8b949e] font-medium">Symbol</th>
-              <th className="px-4 py-3 text-left text-[#8b949e] font-medium">Name</th>
+              <th className="hidden sm:table-cell px-4 py-3 text-left text-[#8b949e] font-medium">Name</th>
               <th className="px-4 py-3 text-right text-[#8b949e] font-medium">Mkt Value</th>
-              <th className="px-4 py-3 text-right text-[#8b949e] font-medium">Gain / Loss</th>
+              <th className="hidden sm:table-cell px-4 py-3 text-right text-[#8b949e] font-medium">Gain / Loss</th>
               <th className="px-4 py-3 text-right text-[#8b949e] font-medium">Return %</th>
             </tr>
           </thead>
@@ -57,12 +57,12 @@ export default function TopHoldingsTable({ holdings, totalNav }: Props) {
                       />
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-slate-300">{h.name}</td>
+                  <td className="hidden sm:table-cell px-4 py-3 text-slate-300">{h.name}</td>
                   <td className="px-4 py-3 text-right text-white font-medium tabular-nums">
                     {fmt(h.value)}
                   </td>
                   <td
-                    className={`px-4 py-3 text-right font-medium tabular-nums ${
+                    className={`hidden sm:table-cell px-4 py-3 text-right font-medium tabular-nums ${
                       h.gainLoss >= 0 ? "text-[#BDFF00]" : "text-red-400"
                     }`}
                   >

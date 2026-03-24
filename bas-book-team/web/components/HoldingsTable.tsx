@@ -49,11 +49,11 @@ export default function HoldingsTable({ holdings }: Props) {
     return 0;
   });
 
-  const cols: { key: SortKey; label: string; align: "left" | "right" }[] = [
+  const cols: { key: SortKey; label: string; align: "left" | "right"; mobileHidden?: boolean }[] = [
     { key: "symbol", label: "Symbol", align: "left" },
-    { key: "name", label: "Name", align: "left" },
-    { key: "qty", label: "Qty", align: "right" },
-    { key: "price", label: "Price", align: "right" },
+    { key: "name", label: "Name", align: "left", mobileHidden: true },
+    { key: "qty", label: "Qty", align: "right", mobileHidden: true },
+    { key: "price", label: "Price", align: "right", mobileHidden: true },
     { key: "value", label: "Mkt Value", align: "right" },
     { key: "gainLoss", label: "Gain / Loss", align: "right" },
     { key: "gainPct", label: "Return", align: "right" },
@@ -74,7 +74,7 @@ export default function HoldingsTable({ holdings }: Props) {
                   onClick={() => handleSort(col.key)}
                   className={`px-4 py-3 font-medium text-[#8b949e] cursor-pointer hover:text-white select-none ${
                     col.align === "right" ? "text-right" : "text-left"
-                  }`}
+                  } ${col.mobileHidden ? "hidden sm:table-cell" : ""}`}
                 >
                   <span className="flex items-center gap-1 justify-end">
                     {col.align === "left" && col.label}
@@ -98,11 +98,11 @@ export default function HoldingsTable({ holdings }: Props) {
                 <td className="px-4 py-3 font-bold text-white tabular-nums">
                   {h.symbol}
                 </td>
-                <td className="px-4 py-3 text-slate-300">{h.name}</td>
-                <td className="px-4 py-3 text-right text-slate-300 tabular-nums">
+                <td className="hidden sm:table-cell px-4 py-3 text-slate-300">{h.name}</td>
+                <td className="hidden sm:table-cell px-4 py-3 text-right text-slate-300 tabular-nums">
                   {h.qty.toLocaleString()}
                 </td>
-                <td className="px-4 py-3 text-right text-slate-300 tabular-nums">
+                <td className="hidden sm:table-cell px-4 py-3 text-right text-slate-300 tabular-nums">
                   {fmt(h.price)}
                 </td>
                 <td className="px-4 py-3 text-right text-white font-medium tabular-nums">

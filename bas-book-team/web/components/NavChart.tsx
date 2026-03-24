@@ -245,10 +245,10 @@ export default function NavChart({ history, benchmarkHistory, timeRange, onTimeR
   }, [history, benchmarkHistory, timeRange]);
 
   return (
-    <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-white font-semibold">NAV Performance</h2>
-        <div className="flex gap-1">
+    <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-4 sm:p-6">
+      <div className="flex items-start sm:items-center justify-between gap-2 mb-4">
+        <h2 className="text-white font-semibold shrink-0">NAV Performance</h2>
+        <div className="flex flex-wrap justify-end gap-1">
           {TIME_RANGES.map((r) => (
             <button
               key={r}
