@@ -10,9 +10,11 @@ npm run build        # Production build (outputs to .svelte-kit/output)
 npm run preview      # Preview production build locally
 npm run check        # TypeScript + Svelte type checking
 npm run check:watch  # Type checking in watch mode
+npm test             # Run unit tests (Vitest, single pass)
+npm run test:watch   # Run unit tests in watch mode
 ```
 
-There is no test runner configured.
+**Test runner: Vitest** — configured in `vite.config.ts` (`test.include: src/**/*.{test,spec}.ts`). Tests run in `node` environment (no DOM/jsdom needed for pure utility functions). Test files live next to the module they test: `src/lib/data.test.ts`.
 
 ## Architecture
 

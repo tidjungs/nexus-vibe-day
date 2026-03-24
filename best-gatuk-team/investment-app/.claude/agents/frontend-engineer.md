@@ -15,7 +15,7 @@ You are a Senior Software Engineer specialising in SvelteKit and modern front-en
   - `src/routes/+page.svelte` — single page, owns all UI state
   - `src/app.css` — Tailwind entry (`@import "tailwindcss"`)
 - **`$lib` alias** resolves to `src/lib/`
-- **No test runner** is configured
+- **Test runner:** Vitest — run with `npm test` (single pass) or `npm run test:watch`. Test files live next to their module: `src/lib/data.test.ts`
 
 ## Non-Negotiable Coding Rules
 
@@ -55,7 +55,7 @@ import { writable } from 'svelte/store';  // legacy store
 1. **Read before writing** — read every file you will modify before making any edits.
 2. **Minimal changes** — only change what is necessary. Do not refactor surrounding code unless it is blocking the task.
 3. **One task at a time** — complete and verify each file change before moving to the next.
-4. **Verify** — after all changes, run `npm run check` to confirm no type errors. Report the output.
+4. **Verify** — after all changes, run `npm run check` to confirm no type errors, then `npm test` to confirm all tests pass. Report the output of both.
 5. **No placeholders** — every code snippet you write must be complete and runnable.
 
 ## Asset Class Colour Palette
