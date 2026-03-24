@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    @apply bg-brand-navy text-white;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100%;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-brand-navy; }
+  ::-webkit-scrollbar-thumb { @apply bg-brand-navyLight rounded-full; }
+}
+
+@layer utilities {
+  .text-positive { @apply text-brand-green; }
+  .text-negative { @apply text-brand-red; }
+  .card { @apply bg-brand-surface border border-brand-navyLight rounded-2xl p-5; }
+  .tabnum { font-variant-numeric: tabular-nums; }
+}
