@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* ─── DESIGN TOKENS ─────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --color-bg-app: #f4f5f7;
+  --color-bg-sidebar: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-bg-card-inner: #f8f9fa;
+  --color-bg-card-hover: rgba(0, 0, 0, 0.02);
+  --color-bg-subtle: rgba(0, 0, 0, 0.03);
+  --color-bg-input: #f0f1f3;
+
+  /* Borders */
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-subtle: rgba(0, 0, 0, 0.04);
+  --color-border-medium: rgba(0, 0, 0, 0.12);
+
+  /* Text */
+  --color-text-primary: #0f1117;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #9ca3af;
+  --color-text-muted: #c4c9d4;
+
+  /* Nav */
+  --color-nav-active-bg: rgba(0, 0, 0, 0.06);
+  --color-nav-active-text: #0f1117;
+  --color-nav-hover-bg: rgba(0, 0, 0, 0.03);
+
+  /* Chart */
+  --color-chart-line: #1d2b4f;
+  --color-chart-grid: rgba(0, 0, 0, 0.06);
+  --color-chart-tick: #9ca3af;
+  --color-chart-tooltip-bg: #ffffff;
+  --color-chart-tooltip-border: rgba(0, 0, 0, 0.1);
+  --color-chart-tooltip-text: #0f1117;
+  --color-chart-tooltip-label: #6b7280;
+
+  /* Semantic */
+  --color-positive: #059669;
+  --color-negative: #dc2626;
+  --color-positive-bg: rgba(5, 150, 105, 0.08);
+  --color-negative-bg: rgba(220, 38, 38, 0.08);
+
+  /* Range selector active pill */
+  --color-range-active-bg: #0f1117;
+  --color-range-active-text: #ffffff;
+
+  /* Gauge / progress track */
+  --color-gauge-track: rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  /* Backgrounds */
+  --color-bg-app: #0d0d0d;
+  --color-bg-sidebar: #111111;
+  --color-bg-card: #111111;
+  --color-bg-card-inner: #161616;
+  --color-bg-card-hover: rgba(255, 255, 255, 0.02);
+  --color-bg-subtle: rgba(255, 255, 255, 0.03);
+  --color-bg-input: #000000;
+
+  /* Borders */
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-medium: rgba(255, 255, 255, 0.20);
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.60);
+  --color-text-tertiary: rgba(255, 255, 255, 0.40);
+  --color-text-muted: rgba(255, 255, 255, 0.25);
+
+  /* Nav */
+  --color-nav-active-bg: rgba(255, 255, 255, 0.10);
+  --color-nav-active-text: #ffffff;
+  --color-nav-hover-bg: rgba(255, 255, 255, 0.05);
+
+  /* Chart */
+  --color-chart-line: #ffffff;
+  --color-chart-grid: rgba(255, 255, 255, 0.06);
+  --color-chart-tick: #6b7280;
+  --color-chart-tooltip-bg: #1a1a1a;
+  --color-chart-tooltip-border: rgba(255, 255, 255, 0.12);
+  --color-chart-tooltip-text: #ffffff;
+  --color-chart-tooltip-label: rgba(255, 255, 255, 0.50);
+
+  /* Semantic */
+  --color-positive: #34d399;
+  --color-negative: #f87171;
+  --color-positive-bg: rgba(52, 211, 153, 0.10);
+  --color-negative-bg: rgba(248, 113, 113, 0.10);
+
+  /* Range selector active pill */
+  --color-range-active-bg: #ffffff;
+  --color-range-active-text: #000000;
+
+  /* Gauge / progress track */
+  --color-gauge-track: rgba(255, 255, 255, 0.08);
+}
+
+/* Smooth theme transitions */
+*, *::before, *::after {
+  transition-property: background-color, color, border-color, fill, stroke;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+/* ─── SPACEBAR SHAKE GIMMICK ────────────────────────────────── */
+
+@keyframes shake {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  10%  { transform: translate(-6px, -3px) rotate(-1deg); }
+  20%  { transform: translate(6px, 3px) rotate(1deg); }
+  30%  { transform: translate(-5px, 2px) rotate(0deg); }
+  40%  { transform: translate(5px, -2px) rotate(1deg); }
+  50%  { transform: translate(-4px, 3px) rotate(-1deg); }
+  60%  { transform: translate(4px, -3px) rotate(0deg); }
+  70%  { transform: translate(-3px, 2px) rotate(1deg); }
+  80%  { transform: translate(3px, -1px) rotate(-1deg); }
+  90%  { transform: translate(-2px, 1px) rotate(0deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.shake {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
