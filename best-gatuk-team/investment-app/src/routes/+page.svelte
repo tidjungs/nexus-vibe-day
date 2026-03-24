@@ -8,9 +8,10 @@
 		marketValue,
 		allocationByClass,
 		assetClassColors,
+		riskColors,
 		fmtCurrency,
 		fmt,
-		type AssetClass,
+		type FundCategory,
 		type Holding
 	} from '$lib/data';
 	import { getTheme, toggleTheme } from '$lib/stores/theme.svelte';
@@ -24,10 +25,10 @@
 	type SortKey = 'name' | 'assetClass' | 'marketValue' | 'gainLoss' | 'dayChange';
 	let sortKey = $state<SortKey>('marketValue');
 	let sortAsc = $state(false);
-	let filterClass = $state<AssetClass | 'All'>('All');
+	let filterClass = $state<FundCategory | 'All'>('All');
 	let searchQuery = $state('');
 
-	const assetClasses: (AssetClass | 'All')[] = ['All', 'Equity', 'Fixed Income', 'Alternatives', 'Cash'];
+	const fundCategories: (FundCategory | 'All')[] = ['All', 'Value Equity', 'Diversified', 'Thematic', 'Balanced', 'Money Market'];
 
 	const sorted = $derived(() => {
 		let list = holdings.filter((h) => {
@@ -91,7 +92,7 @@
 	const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 	interface Arc {
-		assetClass: AssetClass;
+		assetClass: FundCategory;
 		color: string;
 		offset: number;
 		dash: number;
@@ -163,7 +164,7 @@
 			<div class="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4"></div>
 			<div class="absolute bottom-0 left-1/3 w-48 h-48 bg-white/5 rounded-full translate-y-1/2"></div>
 			<div class="relative z-1">
-				<p class="text-sm font-medium text-white/70 mb-2 uppercase tracking-widest">Total Portfolio NAV</p>
+				<p class="text-sm font-medium text-white/70 mb-2 uppercase tracking-widest">Total Portfolio Value · Jitta Wealth</p>
 				<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
 					<div>
 						<h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">{fmtCurrency(nav)}</h1>
@@ -210,7 +211,7 @@
 		<!-- Allocation Donut + Snapshot -->
 		<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
 			<div class="md:col-span-1 rounded-2xl bg-white dark:bg-dark-card border border-periwinkle-200/60 dark:border-dark-border p-6 shadow-sm flex flex-col items-center justify-center">
-				<p class="text-sm font-bold text-navy dark:text-white mb-5">Asset Allocation</p>
+				<p class="text-sm font-bold text-navy dark:text-white mb-5">Fund Allocation</p>
 				<svg viewBox="0 0 160 160" class="w-40 h-40">
 					{#each arcs() as arc}
 						<circle
@@ -225,7 +226,7 @@
 						/>
 					{/each}
 					<text x="80" y="76" text-anchor="middle" class="fill-navy-light/50 dark:fill-slate-400 font-medium" font-size="9">NAV</text>
-					<text x="80" y="92" text-anchor="middle" class="fill-navy dark:fill-white font-extrabold" font-size="11">{fmtCurrency(nav / 1000)}k</text>
+					<text x="80" y="92" text-anchor="middle" class="fill-navy dark:fill-white font-extrabold" font-size="11">฿{fmt(nav / 1000000, 1)}M</text>
 				</svg>
 				<div class="mt-6 space-y-3 w-full">
 					{#each allocation as a}
@@ -278,7 +279,7 @@
 		<section class="rounded-2xl bg-white dark:bg-dark-card border border-periwinkle-200/60 dark:border-dark-border shadow-sm overflow-hidden">
 			<!-- Table Header + Filters -->
 			<div class="p-5 sm:p-6 border-b border-periwinkle-100 dark:border-dark-border flex flex-col sm:flex-row sm:items-center gap-3">
-				<h2 class="text-lg font-bold text-navy dark:text-white flex-1">Portfolio Holdings</h2>
+				<h2 class="text-lg font-bold text-navy dark:text-white flex-1">My Jitta Wealth Holdings</h2>
 				<div class="flex flex-col sm:flex-row gap-2 sm:items-center">
 					<!-- Search -->
 					<div class="relative">
@@ -296,7 +297,7 @@
 						bind:value={filterClass}
 						class="py-2 px-3 text-sm bg-periwinkle-50 dark:bg-dark-card-alt border border-periwinkle-200 dark:border-dark-border rounded-xl text-navy dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-vivid-blue/30 focus:border-vivid-blue"
 					>
-						{#each assetClasses as cls}
+						{#each fundCategories as cls}
 							<option value={cls}>{cls}</option>
 						{/each}
 					</select>
@@ -312,11 +313,11 @@
 								Name {sortIcon('name')}
 							</th>
 							<th class="text-left px-4 py-3.5 cursor-pointer hover:text-vivid-blue select-none transition-colors" onclick={() => toggleSort('assetClass')}>
-								Class {sortIcon('assetClass')}
+								Type {sortIcon('assetClass')}
 							</th>
 							<th class="text-right px-4 py-3.5">Units</th>
-							<th class="text-right px-4 py-3.5">Avg Cost</th>
-							<th class="text-right px-4 py-3.5">Price</th>
+							<th class="text-right px-4 py-3.5">Avg NAV</th>
+							<th class="text-right px-4 py-3.5">NAV/Unit</th>
 							<th class="text-right px-4 py-3.5 cursor-pointer hover:text-vivid-blue select-none transition-colors" onclick={() => toggleSort('marketValue')}>
 								Mkt Value {sortIcon('marketValue')}
 							</th>
@@ -337,12 +338,17 @@
 							<tr class="border-b border-periwinkle-50 dark:border-dark-border/50 hover:bg-periwinkle-50/60 dark:hover:bg-dark-card-alt/60 transition-colors">
 								<td class="px-6 py-4">
 									<div class="font-semibold text-navy dark:text-white">{h.name}</div>
-									<div class="text-xs text-navy-light/50 dark:text-slate-500 mt-0.5">{h.ticker} · {fmt(weight, 1)}% of NAV</div>
+									<div class="text-xs text-navy-light/50 dark:text-slate-500 mt-0.5">{h.ticker} · {fmt(weight, 1)}% · {h.expectedReturn}</div>
 								</td>
 								<td class="px-4 py-4">
 									<span class="inline-block px-2.5 py-1 rounded-lg text-xs font-semibold" style="background:{assetClassColors[h.assetClass]}15; color:{assetClassColors[h.assetClass]}">
 										{h.assetClass}
 									</span>
+									<div class="mt-1.5">
+										<span class="inline-block px-2 py-0.5 rounded-md text-xs font-medium" style="background:{riskColors[h.riskLevel]}15; color:{riskColors[h.riskLevel]}">
+											{h.riskLevel}
+										</span>
+									</div>
 								</td>
 								<td class="px-4 py-4 text-right text-navy-light/70 dark:text-slate-400">{fmt(h.units, 0)}</td>
 								<td class="px-4 py-4 text-right text-navy-light/70 dark:text-slate-400">{fmtCurrency(h.avgCost)}</td>
@@ -377,11 +383,12 @@
 						<div class="flex items-start justify-between gap-2">
 							<div>
 								<div class="font-semibold text-navy dark:text-white text-sm">{h.name}</div>
-								<div class="text-xs text-navy-light/50 dark:text-slate-500 mt-0.5">{h.ticker}</div>
+								<div class="text-xs text-navy-light/50 dark:text-slate-500 mt-0.5">{h.ticker} · {h.expectedReturn}</div>
 							</div>
-							<span class="flex-shrink-0 inline-block px-2.5 py-1 rounded-lg text-xs font-semibold" style="background:{assetClassColors[h.assetClass]}15; color:{assetClassColors[h.assetClass]}">
-								{h.assetClass}
-							</span>
+							<div class="flex flex-col items-end gap-1">
+								<span class="inline-block px-2.5 py-1 rounded-lg text-xs font-semibold" style="background:{assetClassColors[h.assetClass]}15; color:{assetClassColors[h.assetClass]}">{h.assetClass}</span>
+								<span class="inline-block px-2 py-0.5 rounded-md text-xs font-medium" style="background:{riskColors[h.riskLevel]}15; color:{riskColors[h.riskLevel]}">{h.riskLevel}</span>
+							</div>
 						</div>
 						<div class="grid grid-cols-3 gap-2 text-xs">
 							<div>
@@ -416,7 +423,7 @@
 			{#if sorted().length > 0}
 				<div class="px-6 py-3.5 border-t border-periwinkle-100 dark:border-dark-border flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-navy-light/50 dark:text-slate-500">
 					<span>{sorted().length} of {holdings.length} holdings</span>
-					<span>All values in USD</span>
+					<span>All values in THB</span>
 				</div>
 			{/if}
 		</section>
