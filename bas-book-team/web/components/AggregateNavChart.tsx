@@ -25,6 +25,10 @@ export default function AggregateNavChart({ data }: Props) {
               <stop offset="5%" stopColor="#BDFF00" stopOpacity={0.3} />
               <stop offset="95%" stopColor="#BDFF00" stopOpacity={0} />
             </linearGradient>
+            <linearGradient id="aggLineGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#a855f7" />
+              <stop offset="100%" stopColor="#BDFF00" />
+            </linearGradient>
           </defs>
           <XAxis dataKey="date" hide />
           <YAxis hide domain={["auto", "auto"]} />
@@ -47,7 +51,7 @@ export default function AggregateNavChart({ data }: Props) {
           <Area
             type="monotone"
             dataKey="value"
-            stroke="#BDFF00"
+            stroke="url(#aggLineGradient)"
             strokeWidth={2}
             fill="url(#aggNavGradient)"
             dot={false}

@@ -36,6 +36,91 @@ function filterHistory(history: NavPoint[], range: TimeRange): NavPoint[] {
   }
 }
 
+class GradientLinePrimitive {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _chart: any = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _series: any = null;
+  private _data: { time: string; value: number }[] = [];
+  private _requestUpdate: (() => void) | null = null;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  attached(param: any) {
+    this._chart = param.chart;
+    this._series = param.series;
+    this._requestUpdate = param.requestUpdate;
+  }
+
+  detached() {
+    this._chart = null;
+    this._series = null;
+    this._requestUpdate = null;
+  }
+
+  updateData(data: { time: string; value: number }[]) {
+    this._data = data;
+    this._requestUpdate?.();
+  }
+
+  paneViews() {
+    const chart = this._chart;
+    const series = this._series;
+    const data = this._data;
+
+    return [
+      {
+        renderer: () => ({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          draw: (target: any) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            target.useBitmapCoordinateSpace(({ context: ctx, horizontalPixelRatio, verticalPixelRatio }: any) => {
+              if (!chart || !series || data.length < 2) return;
+
+              const points = data
+                .map((d) => ({
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  x: chart.timeScale().timeToCoordinate(d.time as any),
+                  y: series.priceToCoordinate(d.value),
+                }))
+                .filter((p) => p.x !== null && p.y !== null)
+                .map((p) => ({
+                  x: p.x! * horizontalPixelRatio,
+                  y: p.y! * verticalPixelRatio,
+                }));
+
+              if (points.length < 2) return;
+
+              const grad = ctx.createLinearGradient(
+                points[0].x,
+                0,
+                points[points.length - 1].x,
+                0
+              );
+              grad.addColorStop(0, "#a855f7");
+              grad.addColorStop(1, "#BDFF00");
+
+              ctx.beginPath();
+              ctx.moveTo(points[0].x, points[0].y);
+              for (let i = 1; i < points.length - 1; i++) {
+                const mx = (points[i].x + points[i + 1].x) / 2;
+                const my = (points[i].y + points[i + 1].y) / 2;
+                ctx.quadraticCurveTo(points[i].x, points[i].y, mx, my);
+              }
+              ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+
+              ctx.strokeStyle = grad;
+              ctx.lineWidth = 2 * horizontalPixelRatio;
+              ctx.lineJoin = "round";
+              ctx.lineCap = "round";
+              ctx.stroke();
+            });
+          },
+        }),
+      },
+    ];
+  }
+}
+
 export default function NavChart({ history, benchmarkHistory, timeRange, onTimeRangeChange }: Props) {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -44,6 +129,7 @@ export default function NavChart({ history, benchmarkHistory, timeRange, onTimeR
   const seriesRef = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const benchmarkSeriesRef = useRef<any>(null);
+  const primitiveRef = useRef<GradientLinePrimitive | null>(null);
 
   useEffect(() => {
     let cleanupFn: (() => void) | undefined;
@@ -79,13 +165,17 @@ export default function NavChart({ history, benchmarkHistory, timeRange, onTimeR
       });
 
       const areaSeries = chart.addSeries(AreaSeries, {
-        lineColor: "#BDFF00",
-        topColor: "rgba(189, 255, 0, 0.25)",
+        lineColor: "transparent",
+        topColor: "rgba(168, 85, 247, 0.08)",
         bottomColor: "rgba(189, 255, 0, 0)",
         lineWidth: 2,
         priceLineVisible: false,
         lastValueVisible: true,
       });
+
+      const primitive = new GradientLinePrimitive();
+      areaSeries.attachPrimitive(primitive);
+      primitiveRef.current = primitive;
 
       chartRef.current = chart;
       seriesRef.current = areaSeries;
@@ -93,7 +183,7 @@ export default function NavChart({ history, benchmarkHistory, timeRange, onTimeR
       if (benchmarkHistory && benchmarkHistory.length > 0) {
         const benchmarkSeries = chart.addSeries(AreaSeries, {
           lineColor: "#BF5AF2",
-          topColor: "rgba(191, 90, 242, 0.2)",
+          topColor: "rgba(191, 90, 242, 0.12)",
           bottomColor: "rgba(191, 90, 242, 0)",
           lineWidth: 2,
           priceLineVisible: false,
@@ -106,6 +196,8 @@ export default function NavChart({ history, benchmarkHistory, timeRange, onTimeR
       }
 
       const filtered = filterHistory(history, timeRange);
+      const mappedData = filtered.map((p) => ({ time: p.date, value: p.value }));
+      primitive.updateData(mappedData);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       areaSeries.setData(filtered.map((p) => ({ time: p.date as any, value: p.value })));
       chart.timeScale().fitContent();
@@ -131,6 +223,7 @@ export default function NavChart({ history, benchmarkHistory, timeRange, onTimeR
         chartRef.current = null;
         seriesRef.current = null;
         benchmarkSeriesRef.current = null;
+        primitiveRef.current = null;
       }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -139,6 +232,8 @@ export default function NavChart({ history, benchmarkHistory, timeRange, onTimeR
   useEffect(() => {
     if (!seriesRef.current || !chartRef.current) return;
     const filtered = filterHistory(history, timeRange);
+    const mappedData = filtered.map((p) => ({ time: p.date, value: p.value }));
+    primitiveRef.current?.updateData(mappedData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     seriesRef.current.setData(filtered.map((p) => ({ time: p.date as any, value: p.value })));
     if (benchmarkSeriesRef.current && benchmarkHistory) {
