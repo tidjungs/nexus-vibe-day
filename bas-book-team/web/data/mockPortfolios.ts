@@ -153,9 +153,9 @@ export const mockPortfolios: Portfolio[] = [
       },
     ],
     allocation: [
-      { class: "Equities", pct: 65, color: "#3b82f6" },
-      { class: "Bonds", pct: 25, color: "#6366f1" },
-      { class: "Cash", pct: 10, color: "#94a3b8" },
+      { class: "Equities", pct: 65, color: "#BF5AF2" },
+      { class: "Bonds", pct: 25, color: "#0A84FF" },
+      { class: "Cash", pct: 10, color: "#8b949e" },
     ],
   },
   {
@@ -223,9 +223,9 @@ export const mockPortfolios: Portfolio[] = [
       },
     ],
     allocation: [
-      { class: "Bonds", pct: 55, color: "#6366f1" },
-      { class: "Equities", pct: 30, color: "#3b82f6" },
-      { class: "Cash", pct: 15, color: "#94a3b8" },
+      { class: "Bonds", pct: 55, color: "#BF5AF2" },
+      { class: "Equities", pct: 30, color: "#0A84FF" },
+      { class: "Cash", pct: 15, color: "#8b949e" },
     ],
   },
   {
@@ -293,9 +293,9 @@ export const mockPortfolios: Portfolio[] = [
       },
     ],
     allocation: [
-      { class: "Technology", pct: 88, color: "#3b82f6" },
-      { class: "Consumer", pct: 8, color: "#8b5cf6" },
-      { class: "Cash", pct: 4, color: "#94a3b8" },
+      { class: "Technology", pct: 88, color: "#BF5AF2" },
+      { class: "Consumer", pct: 8, color: "#0A84FF" },
+      { class: "Cash", pct: 4, color: "#8b949e" },
     ],
   },
 ];

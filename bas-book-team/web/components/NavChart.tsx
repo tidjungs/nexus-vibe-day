@@ -6,6 +6,7 @@ import { TimeRange } from "@/store/portfolioStore";
 
 interface Props {
   history: NavPoint[];
+  benchmarkHistory?: NavPoint[];
   timeRange: TimeRange;
   onTimeRangeChange: (range: TimeRange) => void;
 }
@@ -35,12 +36,14 @@ function filterHistory(history: NavPoint[], range: TimeRange): NavPoint[] {
   }
 }
 
-export default function NavChart({ history, timeRange, onTimeRangeChange }: Props) {
+export default function NavChart({ history, benchmarkHistory, timeRange, onTimeRangeChange }: Props) {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const chartRef = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const seriesRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const benchmarkSeriesRef = useRef<any>(null);
 
   useEffect(() => {
     let cleanupFn: (() => void) | undefined;
@@ -49,7 +52,7 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
       if (!chartContainerRef.current) return;
 
       const lc = await import("lightweight-charts");
-      const { createChart, ColorType, LineStyle, LineSeries } = lc;
+      const { createChart, ColorType, LineStyle, AreaSeries } = lc;
 
       const chart = createChart(chartContainerRef.current, {
         layout: {
@@ -75,19 +78,36 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
         height: 280,
       });
 
-      const lineSeries = chart.addSeries(LineSeries, {
-        color: "#BDFF00",
+      const areaSeries = chart.addSeries(AreaSeries, {
+        lineColor: "#BDFF00",
+        topColor: "rgba(189, 255, 0, 0.25)",
+        bottomColor: "rgba(189, 255, 0, 0)",
         lineWidth: 2,
         priceLineVisible: false,
         lastValueVisible: true,
       });
 
       chartRef.current = chart;
-      seriesRef.current = lineSeries;
+      seriesRef.current = areaSeries;
+
+      if (benchmarkHistory && benchmarkHistory.length > 0) {
+        const benchmarkSeries = chart.addSeries(AreaSeries, {
+          lineColor: "#BF5AF2",
+          topColor: "rgba(191, 90, 242, 0.2)",
+          bottomColor: "rgba(191, 90, 242, 0)",
+          lineWidth: 2,
+          priceLineVisible: false,
+          lastValueVisible: false,
+        });
+        benchmarkSeriesRef.current = benchmarkSeries;
+        const filteredBenchmark = filterHistory(benchmarkHistory, timeRange);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        benchmarkSeries.setData(filteredBenchmark.map((p) => ({ time: p.date as any, value: p.value })));
+      }
 
       const filtered = filterHistory(history, timeRange);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      lineSeries.setData(filtered.map((p) => ({ time: p.date as any, value: p.value })));
+      areaSeries.setData(filtered.map((p) => ({ time: p.date as any, value: p.value })));
       chart.timeScale().fitContent();
 
       const resizeObserver = new ResizeObserver(() => {
@@ -110,6 +130,7 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
         chartRef.current.remove();
         chartRef.current = null;
         seriesRef.current = null;
+        benchmarkSeriesRef.current = null;
       }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -120,8 +141,13 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
     const filtered = filterHistory(history, timeRange);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     seriesRef.current.setData(filtered.map((p) => ({ time: p.date as any, value: p.value })));
+    if (benchmarkSeriesRef.current && benchmarkHistory) {
+      const filteredBenchmark = filterHistory(benchmarkHistory, timeRange);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      benchmarkSeriesRef.current.setData(filteredBenchmark.map((p) => ({ time: p.date as any, value: p.value })));
+    }
     chartRef.current.timeScale().fitContent();
-  }, [history, timeRange]);
+  }, [history, benchmarkHistory, timeRange]);
 
   return (
     <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-6">

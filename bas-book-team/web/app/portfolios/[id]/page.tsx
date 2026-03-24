@@ -112,6 +112,10 @@ export default function PortfolioDetailPage() {
         <div className="mb-6">
           <NavChart
             history={portfolio.navHistory}
+            benchmarkHistory={portfolio.navHistory.map(p => ({
+              date: p.date,
+              value: Math.round(p.value * 0.85 * 100) / 100,
+            }))}
             timeRange={timeRange}
             onTimeRangeChange={setTimeRange}
           />
