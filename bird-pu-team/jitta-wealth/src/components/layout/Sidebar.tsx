@@ -24,7 +24,7 @@ export function Sidebar({ onClose }: SidebarProps) {
           </div>
           <div>
             <p className="text-white font-bold text-sm leading-none">Jitta</p>
-            <p className="text-slate-400 text-xs">Wealth</p>
+            <p className="text-slate-400 text-xs">WOW!</p>
           </div>
         </div>
         {onClose && (

@@ -37,7 +37,7 @@ export function AppShell() {
 
       {/* Main */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <TopNav onMenuClick={() => setSidebarOpen(true)} title={titles[pathname] ?? 'Jitta Wealth'} />
+        <TopNav onMenuClick={() => setSidebarOpen(true)} title={titles[pathname] ?? 'Jitta WOW!'} />
         <main className="flex-1 overflow-y-auto">
           <Outlet />
         </main>

@@ -31,7 +31,7 @@ export function FundsPage() {
     <div className="p-4 md:p-6 max-w-7xl mx-auto">
       <div className="mb-6">
         <h1 className="text-xl font-bold text-brand-text hidden lg:block mb-1">Funds</h1>
-        <p className="text-brand-muted text-sm">Explore all Jitta Wealth investment funds</p>
+        <p className="text-brand-muted text-sm">Explore all Jitta WOW! investment funds</p>
       </div>
 
       {/* Search */}

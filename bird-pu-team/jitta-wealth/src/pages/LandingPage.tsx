@@ -48,7 +48,7 @@ export function LandingPage() {
           </div>
           <div>
             <span className="text-brand-text font-bold text-sm">Jitta</span>
-            <span className="text-brand-muted text-sm"> Wealth</span>
+            <span className="text-brand-muted text-sm"> WOW!</span>
           </div>
         </div>
         <Button variant="primary" size="sm" onClick={() => navigate(ROUTES.DASHBOARD)}>
@@ -72,7 +72,7 @@ export function LandingPage() {
         </h1>
 
         <p className="text-brand-muted text-lg md:text-xl max-w-2xl mx-auto mb-10">
-          Jitta Wealth คัดเลือกกองทุนคุณภาพด้วยหลักการลงทุนแบบ VI
+          Jitta WOW! คัดเลือกกองทุนคุณภาพด้วยหลักการลงทุนแบบ VI
           กระจายความเสี่ยงทั่วโลก เริ่มต้นได้ตั้งแต่ ฿1,000
         </p>
 
@@ -114,7 +114,7 @@ export function LandingPage() {
       {/* Features */}
       <section className="px-6 py-20 max-w-5xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-brand-text text-center mb-3">
-          ทำไมต้อง Jitta Wealth?
+          ทำไมต้อง Jitta WOW!?
         </h2>
         <p className="text-brand-muted text-center mb-12">สร้างมาเพื่อนักลงทุนยุคใหม่ ขับเคลื่อนด้วยข้อมูล</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -151,7 +151,7 @@ export function LandingPage() {
 
       {/* Footer */}
       <footer className="px-6 py-8 border-t border-brand-border text-center text-brand-muted text-xs">
-        <p>© 2026 บริษัท Jitta Wealth จำกัด · ภายใต้การกำกับดูแลของ ก.ล.ต. ไทย · ผลตอบแทนในอดีตไม่ได้การันตีผลตอบแทนในอนาคต</p>
+        <p>© 2026 บริษัท Jitta WOW! จำกัด · ภายใต้การกำกับดูแลของ ก.ล.ต. ไทย · ผลตอบแทนในอดีตไม่ได้การันตีผลตอบแทนในอนาคต</p>
       </footer>
     </div>
   )
