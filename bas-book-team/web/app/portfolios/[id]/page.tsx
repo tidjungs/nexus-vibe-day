@@ -26,12 +26,12 @@ export default function PortfolioDetailPage() {
 
   if (!portfolio) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0D1117] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-slate-400 text-lg">Portfolio not found</p>
+          <p className="text-[#8b949e] text-lg">Portfolio not found</p>
           <button
             onClick={() => router.push("/portfolios")}
-            className="mt-4 text-blue-400 hover:text-blue-300"
+            className="mt-4 text-[#BDFF00] hover:text-[#d4ff33]"
           >
             ← Back to portfolios
           </button>
@@ -43,13 +43,13 @@ export default function PortfolioDetailPage() {
   const isPositive = portfolio.navChange >= 0;
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-[#0D1117] text-white">
       <div className="max-w-6xl mx-auto px-6 py-10">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-8">
           <button
             onClick={() => router.push("/portfolios")}
-            className="text-slate-400 hover:text-white text-sm transition-colors"
+            className="text-[#8b949e] hover:text-white text-sm transition-colors"
           >
             ← Portfolios
           </button>
@@ -60,7 +60,7 @@ export default function PortfolioDetailPage() {
         {/* Portfolio header + switcher */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <p className="text-slate-400 text-sm font-medium uppercase tracking-widest mb-1">
+            <p className="text-[#8b949e] text-sm font-medium uppercase tracking-widest mb-1">
               {portfolio.name}
             </p>
             <h1 className="text-5xl font-bold tabular-nums mb-2">
@@ -69,7 +69,7 @@ export default function PortfolioDetailPage() {
             <div className="flex items-center gap-2">
               <span
                 className={`text-lg font-semibold tabular-nums ${
-                  isPositive ? "text-emerald-400" : "text-red-400"
+                  isPositive ? "text-[#BDFF00]" : "text-red-400"
                 }`}
               >
                 {isPositive ? "+" : ""}
@@ -78,14 +78,14 @@ export default function PortfolioDetailPage() {
               <span
                 className={`text-sm px-2 py-0.5 rounded-full ${
                   isPositive
-                    ? "bg-emerald-400/10 text-emerald-400"
+                    ? "bg-[#BDFF00]/10 text-[#BDFF00]"
                     : "bg-red-400/10 text-red-400"
                 }`}
               >
                 {isPositive ? "+" : ""}
                 {portfolio.navChangePct.toFixed(2)}%
               </span>
-              <span className="text-slate-500 text-sm">today</span>
+              <span className="text-[#8b949e] text-sm">today</span>
             </div>
           </div>
 
@@ -93,7 +93,7 @@ export default function PortfolioDetailPage() {
           <select
             value={portfolio.id}
             onChange={(e) => router.push(`/portfolios/${e.target.value}`)}
-            className="bg-slate-800 border border-slate-700 text-white rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-blue-500 cursor-pointer"
+            className="bg-[#161b22] border border-[#21262d] text-white rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-[#BDFF00] cursor-pointer"
           >
             {mockPortfolios.map((p) => (
               <option key={p.id} value={p.id}>

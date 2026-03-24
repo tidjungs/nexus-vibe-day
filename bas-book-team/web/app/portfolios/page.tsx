@@ -73,18 +73,18 @@ export default function PortfoliosPage() {
     .slice(0, 8);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-[#0D1117] text-white">
       <div className="max-w-6xl mx-auto px-6 py-10">
         {/* Header */}
         <div className="mb-8">
-          <p className="text-slate-400 text-sm font-medium uppercase tracking-widest mb-1">
+          <p className="text-[#8b949e] text-sm font-medium uppercase tracking-widest mb-1">
             Total Assets Under Management
           </p>
           <h1 className="text-5xl font-bold tabular-nums mb-2">{fmt(total)}</h1>
           <div className="flex items-center gap-2">
             <span
               className={`text-lg font-semibold tabular-nums ${
-                totalChange >= 0 ? "text-emerald-400" : "text-red-400"
+                totalChange >= 0 ? "text-[#BDFF00]" : "text-red-400"
               }`}
             >
               {totalChange >= 0 ? "+" : ""}
@@ -93,26 +93,26 @@ export default function PortfoliosPage() {
             <span
               className={`text-sm px-2 py-0.5 rounded-full ${
                 totalChange >= 0
-                  ? "bg-emerald-400/10 text-emerald-400"
+                  ? "bg-[#BDFF00]/10 text-[#BDFF00]"
                   : "bg-red-400/10 text-red-400"
               }`}
             >
               {totalChange >= 0 ? "+" : ""}
               {totalChangePct.toFixed(2)}%
             </span>
-            <span className="text-slate-500 text-sm">today</span>
+            <span className="text-[#8b949e] text-sm">today</span>
           </div>
         </div>
 
         {/* Stats Bar */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-          <div className="bg-slate-800 border border-slate-700 rounded-xl p-5">
-            <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">
+          <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5">
+            <p className="text-[#8b949e] text-xs font-medium uppercase tracking-wider mb-1">
               Unrealized Gain / Loss
             </p>
             <p
               className={`text-2xl font-bold tabular-nums ${
-                totalGainLoss >= 0 ? "text-emerald-400" : "text-red-400"
+                totalGainLoss >= 0 ? "text-[#BDFF00]" : "text-red-400"
               }`}
             >
               {totalGainLoss >= 0 ? "+" : ""}
@@ -120,32 +120,32 @@ export default function PortfoliosPage() {
             </p>
           </div>
 
-          <div className="bg-slate-800 border border-slate-700 rounded-xl p-5">
-            <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">
+          <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5">
+            <p className="text-[#8b949e] text-xs font-medium uppercase tracking-wider mb-1">
               Total Cash
             </p>
             <p className="text-2xl font-bold tabular-nums text-white">{fmt(totalCash)}</p>
           </div>
 
-          <div className="bg-slate-800 border border-slate-700 rounded-xl p-5">
-            <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">
+          <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5">
+            <p className="text-[#8b949e] text-xs font-medium uppercase tracking-wider mb-1">
               Best Today
             </p>
-            <p className="text-2xl font-bold tabular-nums text-emerald-400">
+            <p className="text-2xl font-bold tabular-nums text-[#BDFF00]">
               +{bestToday.navChangePct.toFixed(2)}%
             </p>
-            <p className="text-slate-500 text-xs mt-1">{bestToday.name}</p>
+            <p className="text-[#8b949e] text-xs mt-1">{bestToday.name}</p>
           </div>
 
-          <div className="bg-slate-800 border border-slate-700 rounded-xl p-5">
-            <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">
+          <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5">
+            <p className="text-[#8b949e] text-xs font-medium uppercase tracking-wider mb-1">
               Worst Today
             </p>
             <p className="text-2xl font-bold tabular-nums text-red-400">
               {worstToday.navChangePct >= 0 ? "+" : ""}
               {worstToday.navChangePct.toFixed(2)}%
             </p>
-            <p className="text-slate-500 text-xs mt-1">{worstToday.name}</p>
+            <p className="text-[#8b949e] text-xs mt-1">{worstToday.name}</p>
           </div>
         </div>
 
@@ -156,7 +156,7 @@ export default function PortfoliosPage() {
 
         {/* Portfolio grid */}
         <div className="mb-8">
-          <h2 className="text-slate-400 text-sm font-medium uppercase tracking-widest mb-4">
+          <h2 className="text-[#8b949e] text-sm font-medium uppercase tracking-widest mb-4">
             Portfolios ({mockPortfolios.length})
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

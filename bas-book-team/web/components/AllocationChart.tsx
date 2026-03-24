@@ -16,7 +16,7 @@ interface Props {
 
 export default function AllocationChart({ allocation }: Props) {
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl p-6">
+    <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-6">
       <h2 className="text-white font-semibold mb-4">Asset Allocation</h2>
       <ResponsiveContainer width="100%" height={260}>
         <PieChart>
@@ -36,8 +36,8 @@ export default function AllocationChart({ allocation }: Props) {
           </Pie>
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "#161b22",
+              border: "1px solid #21262d",
               borderRadius: "8px",
               color: "#f1f5f9",
             }}

@@ -28,16 +28,16 @@ function Metric({ label, value, sub, positive, neutral }: MetricProps) {
   const valueColor = neutral
     ? "text-white"
     : positive
-    ? "text-emerald-400"
+    ? "text-[#BDFF00]"
     : "text-red-400";
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl p-5">
-      <p className="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">
+    <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5">
+      <p className="text-[#8b949e] text-xs font-medium uppercase tracking-wider mb-1">
         {label}
       </p>
       <p className={`text-2xl font-bold tabular-nums ${valueColor}`}>{value}</p>
-      {sub && <p className="text-slate-500 text-xs mt-1">{sub}</p>}
+      {sub && <p className="text-[#8b949e] text-xs mt-1">{sub}</p>}
     </div>
   );
 }

@@ -60,26 +60,26 @@ export default function HoldingsTable({ holdings }: Props) {
   ];
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden">
-      <div className="px-6 py-4 border-b border-slate-700">
+    <div className="bg-[#161b22] border border-[#21262d] rounded-xl overflow-hidden">
+      <div className="px-6 py-4 border-b border-[#21262d]">
         <h2 className="text-white font-semibold">Holdings</h2>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-slate-700">
+            <tr className="border-b border-[#21262d]">
               {cols.map((col) => (
                 <th
                   key={col.key}
                   onClick={() => handleSort(col.key)}
-                  className={`px-4 py-3 font-medium text-slate-400 cursor-pointer hover:text-white select-none ${
+                  className={`px-4 py-3 font-medium text-[#8b949e] cursor-pointer hover:text-white select-none ${
                     col.align === "right" ? "text-right" : "text-left"
                   }`}
                 >
                   <span className="flex items-center gap-1 justify-end">
                     {col.align === "left" && col.label}
                     {sortKey === col.key && (
-                      <span className="text-blue-400">
+                      <span className="text-[#BDFF00]">
                         {sortDir === "asc" ? "↑" : "↓"}
                       </span>
                     )}
@@ -93,7 +93,7 @@ export default function HoldingsTable({ holdings }: Props) {
             {sorted.map((h) => (
               <tr
                 key={h.symbol}
-                className="border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors"
+                className="border-b border-[#21262d]/50 hover:bg-slate-700/30 transition-colors"
               >
                 <td className="px-4 py-3 font-bold text-white tabular-nums">
                   {h.symbol}
@@ -110,7 +110,7 @@ export default function HoldingsTable({ holdings }: Props) {
                 </td>
                 <td
                   className={`px-4 py-3 text-right font-medium tabular-nums ${
-                    h.gainLoss >= 0 ? "text-emerald-400" : "text-red-400"
+                    h.gainLoss >= 0 ? "text-[#BDFF00]" : "text-red-400"
                   }`}
                 >
                   {h.gainLoss >= 0 ? "+" : ""}
@@ -118,7 +118,7 @@ export default function HoldingsTable({ holdings }: Props) {
                 </td>
                 <td
                   className={`px-4 py-3 text-right font-medium tabular-nums ${
-                    h.gainPct >= 0 ? "text-emerald-400" : "text-red-400"
+                    h.gainPct >= 0 ? "text-[#BDFF00]" : "text-red-400"
                   }`}
                 >
                   {fmtPct(h.gainPct)}

@@ -57,18 +57,18 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
           textColor: "#94a3b8",
         },
         grid: {
-          vertLines: { color: "#1e293b", style: LineStyle.Dotted },
-          horzLines: { color: "#1e293b", style: LineStyle.Dotted },
+          vertLines: { color: "#21262d", style: LineStyle.Dotted },
+          horzLines: { color: "#21262d", style: LineStyle.Dotted },
         },
         crosshair: {
           vertLine: { color: "#475569" },
           horzLine: { color: "#475569" },
         },
         rightPriceScale: {
-          borderColor: "#334155",
+          borderColor: "#21262d",
         },
         timeScale: {
-          borderColor: "#334155",
+          borderColor: "#21262d",
           timeVisible: true,
         },
         width: chartContainerRef.current.clientWidth,
@@ -76,7 +76,7 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
       });
 
       const lineSeries = chart.addSeries(LineSeries, {
-        color: "#3b82f6",
+        color: "#BDFF00",
         lineWidth: 2,
         priceLineVisible: false,
         lastValueVisible: true,
@@ -124,7 +124,7 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
   }, [history, timeRange]);
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl p-6">
+    <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-white font-semibold">NAV Performance</h2>
         <div className="flex gap-1">
@@ -134,8 +134,8 @@ export default function NavChart({ history, timeRange, onTimeRangeChange }: Prop
               onClick={() => onTimeRangeChange(r)}
               className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                 timeRange === r
-                  ? "bg-blue-600 text-white"
-                  : "text-slate-400 hover:text-white hover:bg-slate-700"
+                  ? "bg-[#BDFF00] text-black"
+                  : "text-[#8b949e] hover:text-white hover:bg-[#161b22]"
               }`}
             >
               {r}

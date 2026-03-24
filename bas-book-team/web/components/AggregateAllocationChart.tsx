@@ -29,7 +29,7 @@ function fmt(value: number) {
 
 export default function AggregateAllocationChart({ data }: Props) {
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl p-6">
+    <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-6">
       <h2 className="text-white font-semibold mb-4">Aggregate Allocation</h2>
       <ResponsiveContainer width="100%" height={220}>
         <PieChart>
@@ -49,8 +49,8 @@ export default function AggregateAllocationChart({ data }: Props) {
           </Pie>
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "#161b22",
+              border: "1px solid #21262d",
               borderRadius: "8px",
               color: "#f1f5f9",
             }}
@@ -61,7 +61,7 @@ export default function AggregateAllocationChart({ data }: Props) {
       <table className="w-full text-sm mt-2">
         <tbody>
           {data.map((entry) => (
-            <tr key={entry.class} className="border-t border-slate-700/50">
+            <tr key={entry.class} className="border-t border-[#21262d]/50">
               <td className="py-1.5 pr-2">
                 <span
                   className="inline-block w-2.5 h-2.5 rounded-full mr-2"
@@ -70,7 +70,7 @@ export default function AggregateAllocationChart({ data }: Props) {
                 <span className="text-slate-300">{entry.class}</span>
               </td>
               <td className="py-1.5 text-right text-white tabular-nums">{fmt(entry.value)}</td>
-              <td className="py-1.5 text-right text-slate-400 tabular-nums pl-4">
+              <td className="py-1.5 text-right text-[#8b949e] tabular-nums pl-4">
                 {entry.pct.toFixed(1)}%
               </td>
             </tr>

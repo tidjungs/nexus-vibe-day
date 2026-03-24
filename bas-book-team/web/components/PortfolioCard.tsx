@@ -18,17 +18,17 @@ export default function PortfolioCard({ portfolio }: Props) {
 
   return (
     <Link href={`/portfolios/${portfolio.id}`}>
-      <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 hover:border-blue-500 hover:bg-slate-750 transition-all cursor-pointer group">
+      <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-6 hover:border-[#BDFF00] hover:bg-slate-750 transition-all cursor-pointer group">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <h3 className="text-slate-400 text-sm font-medium uppercase tracking-wider">
+            <h3 className="text-[#8b949e] text-sm font-medium uppercase tracking-wider">
               {portfolio.name}
             </h3>
             <p className="text-white text-3xl font-bold tabular-nums mt-1">
               {fmt(portfolio.nav)}
             </p>
           </div>
-          <span className="text-blue-400 text-xs bg-blue-400/10 px-2 py-1 rounded-md group-hover:bg-blue-400/20 transition-colors">
+          <span className="text-[#BDFF00] text-xs bg-[#BDFF00]/10 px-2 py-1 rounded-md group-hover:bg-[#BDFF00]/20 transition-colors">
             View →
           </span>
         </div>
@@ -36,7 +36,7 @@ export default function PortfolioCard({ portfolio }: Props) {
         <div className="flex items-center gap-2">
           <span
             className={`text-sm font-semibold tabular-nums ${
-              isPositive ? "text-emerald-400" : "text-red-400"
+              isPositive ? "text-[#BDFF00]" : "text-red-400"
             }`}
           >
             {isPositive ? "+" : ""}
@@ -45,22 +45,22 @@ export default function PortfolioCard({ portfolio }: Props) {
           <span
             className={`text-xs px-2 py-0.5 rounded-full font-medium ${
               isPositive
-                ? "bg-emerald-400/10 text-emerald-400"
+                ? "bg-[#BDFF00]/10 text-[#BDFF00]"
                 : "bg-red-400/10 text-red-400"
             }`}
           >
             {isPositive ? "+" : ""}
             {portfolio.navChangePct.toFixed(2)}%
           </span>
-          <span className="text-slate-500 text-xs">today</span>
+          <span className="text-[#8b949e] text-xs">today</span>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-slate-700 grid grid-cols-3 gap-4">
+        <div className="mt-4 pt-4 border-t border-[#21262d] grid grid-cols-3 gap-4">
           <div>
-            <p className="text-slate-500 text-xs">Total Return</p>
+            <p className="text-[#8b949e] text-xs">Total Return</p>
             <p
               className={`text-sm font-semibold tabular-nums ${
-                portfolio.totalReturn >= 0 ? "text-emerald-400" : "text-red-400"
+                portfolio.totalReturn >= 0 ? "text-[#BDFF00]" : "text-red-400"
               }`}
             >
               {portfolio.totalReturn >= 0 ? "+" : ""}
@@ -68,10 +68,10 @@ export default function PortfolioCard({ portfolio }: Props) {
             </p>
           </div>
           <div>
-            <p className="text-slate-500 text-xs">YTD</p>
+            <p className="text-[#8b949e] text-xs">YTD</p>
             <p
               className={`text-sm font-semibold tabular-nums ${
-                portfolio.ytdReturn >= 0 ? "text-emerald-400" : "text-red-400"
+                portfolio.ytdReturn >= 0 ? "text-[#BDFF00]" : "text-red-400"
               }`}
             >
               {portfolio.ytdReturn >= 0 ? "+" : ""}
@@ -79,7 +79,7 @@ export default function PortfolioCard({ portfolio }: Props) {
             </p>
           </div>
           <div>
-            <p className="text-slate-500 text-xs">Cash</p>
+            <p className="text-[#8b949e] text-xs">Cash</p>
             <p className="text-sm font-semibold text-slate-300 tabular-nums">
               {fmt(portfolio.cash)}
             </p>
