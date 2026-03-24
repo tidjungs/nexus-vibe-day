@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Steward Wealth | Portfolio Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-high": "#ffd8e7",
+                        "surface-container": "#ffe0ec",
+                        "inverse-surface": "#220214",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#000000",
+                        "tertiary-dim": "#004aad",
+                        "tertiary-fixed-dim": "#77a1ff",
+                        "on-tertiary-fixed": "#00163d",
+                        "surface-variant": "#ffd0e3",
+                        "secondary-fixed": "#5cfd80",
+                        "on-tertiary-container": "#002d6f",
+                        "on-tertiary": "#f0f2ff",
+                        "on-tertiary-fixed-variant": "#003580",
+                        "on-error-container": "#570008",
+                        "primary": "#b60051",
+                        "surface-container-low": "#ffecf2",
+                        "on-primary-fixed-variant": "#5e0027",
+                        "on-background": "#492136",
+                        "tertiary-fixed": "#8eafff",
+                        "primary-container": "#ff7198",
+                        "on-secondary": "#cfffce",
+                        "surface-tint": "#b60051",
+                        "inverse-on-surface": "#c58da6",
+                        "surface-container-highest": "#ffd0e3",
+                        "on-primary": "#ffeff0",
+                        "surface-dim": "#ffc4dd",
+                        "primary-fixed": "#ff7198",
+                        "on-secondary-fixed-variant": "#006827",
+                        "secondary-fixed-dim": "#4bee74",
+                        "surface-bright": "#fff4f6",
+                        "on-error": "#ffefee",
+                        "error-dim": "#9f0519",
+                        "surface": "#fff4f6",
+                        "on-secondary-fixed": "#004819",
+                        "background": "#fff4f6",
+                        "on-primary-container": "#4d001e",
+                        "inverse-primary": "#ff4c85",
+                        "on-secondary-container": "#005d22",
+                        "primary-fixed-dim": "#ff5389",
+                        "on-surface-variant": "#7c4d64",
+                        "tertiary": "#0055c4",
+                        "primary-dim": "#a00047",
+                        "error": "#b31b25",
+                        "outline": "#9b687f",
+                        "secondary-dim": "#005d22",
+                        "secondary-container": "#5cfd80",
+                        "secondary": "#006a28",
+                        "tertiary-container": "#8eafff",
+                        "on-surface": "#492136",
+                        "error-container": "#fb5151",
+                        "outline-variant": "#d69db6"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 208, 227, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-6 z-50 bg-[#ffecf2] dark:bg-slate-900 h-screen w-64 border-r-0 rounded-r-[2rem] shadow-[12px_0_40px_rgba(73,33,54,0.08)]">
+<div class="mb-10 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">guardian</span>
+</div>
+<span class="text-xl font-bold text-[#492136] dark:text-white font-headline">The Steward</span>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 text-[#7c4d64] dark:text-slate-400 px-4 py-3 font-['Manrope'] font-semibold text-sm hover:bg-[#ffd0e3]/50 dark:hover:bg-pink-900/20 rounded-xl transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 bg-[#ffd0e3] dark:bg-pink-900/30 text-[#b60051] dark:text-pink-200 rounded-xl px-4 py-3 shadow-sm font-['Manrope'] font-semibold text-sm translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span> Portfolio
+            </a>
+<a class="flex items-center gap-3 text-[#7c4d64] dark:text-slate-400 px-4 py-3 font-['Manrope'] font-semibold text-sm hover:bg-[#ffd0e3]/50 dark:hover:bg-pink-900/20 rounded-xl transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">ads_click</span> Targets
+            </a>
+<a class="flex items-center gap-3 text-[#7c4d64] dark:text-slate-400 px-4 py-3 font-['Manrope'] font-semibold text-sm hover:bg-[#ffd0e3]/50 dark:hover:bg-pink-900/20 rounded-xl transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span> Add Funds
+            </button>
+<a class="flex items-center gap-3 text-[#7c4d64] dark:text-slate-400 px-4 py-3 font-['Manrope'] font-semibold text-sm hover:bg-[#ffd0e3]/50 dark:hover:bg-pink-900/20 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">contact_support</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 p-8">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 bg-[#fff4f6]/80 backdrop-blur-md z-40 mb-8 rounded-b-lg">
+<h1 class="font-headline font-black text-[#b60051] text-2xl tracking-tighter">Steward Wealth</h1>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#b60051] border-b-2 border-[#b60051] pb-1 font-['Plus_Jakarta_Sans'] font-bold text-lg tracking-tight" href="#">Markets</a>
+<a class="text-[#7c4d64] font-medium hover:text-[#ff7198] transition-colors font-['Plus_Jakarta_Sans'] text-lg tracking-tight" href="#">Insights</a>
+<a class="text-[#7c4d64] font-medium hover:text-[#ff7198] transition-colors font-['Plus_Jakarta_Sans'] text-lg tracking-tight" href="#">Help</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="bg-[#ffecf2] px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-32" placeholder="Search markets..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Page Content: Portfolio Details -->
+<div class="max-w-6xl mx-auto space-y-10 pb-20">
+<!-- NAV Overview & Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end">
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Portfolio Details</span>
+<span class="text-sm font-semibold">/ Equities Growth Fund</span>
+</div>
+<h2 class="font-headline text-5xl font-extrabold text-on-surface leading-tight">Net Asset Value</h2>
+<div class="flex items-baseline gap-4">
+<span class="text-[5rem] font-headline font-black text-primary leading-none tracking-tighter">฿4,282,150</span>
+<div class="flex items-center bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-bold text-lg animate-pulse">
+<span class="material-symbols-outlined">trending_up</span>
+                            +12.4%
+                        </div>
+</div>
+</div>
+<!-- Mascot Interaction Card -->
+<div class="relative">
+<div class="glass-card p-6 rounded-lg shadow-xl border border-white/20 relative z-10">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-full bg-white p-1 shrink-0 shadow-inner">
+<img class="w-full h-full object-contain rounded-full" data-alt="vibrant pink and blue cartoon bird mascot wearing a suit and glasses looking cheerful and professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8_7f2d8-5wFwQZRbdB6dN5k60EN2ZQctPamC9pGTQ9PF-AYKhqupDWm2EY6H_awKXyfih0tPhl_zk7MCSvWZGOadzzzQAh4nxgDJG7u4_HVl5Ct1oKivkE2lQpn4PR-0vuI4FzsJJKsbr2GZ93d2i--alOtT1zYXq4XIKQ5LjlCdbouEE4kUBf6UQ1jFq1ziXuj-89kvaVRTFPmx18tgSHnyKuw2A76gll6kORm1Kt5HlHbRPdScoAtv5Muq2L9TH0MZB7z2N-ELh"/>
+</div>
+<div class="space-y-2">
+<p class="text-on-surface font-semibold leading-relaxed">
+                                    ยอดเยี่ยมครับพอร์ต Equities ของคุณเติบโตอย่างสดใส! 
+                                    <span class="block text-sm font-normal text-on-surface-variant mt-1">Shall we rebalance to capture these gains?</span>
+</p>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+</div>
+</section>
+<!-- Interactive Chart Section -->
+<section class="bg-surface-container-low p-8 rounded-lg relative overflow-hidden group">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-headline text-2xl font-bold">Growth Projection</h3>
+<div class="flex gap-2">
+<button class="px-4 py-1 rounded-full bg-primary text-on-primary text-xs font-bold">1W</button>
+<button class="px-4 py-1 rounded-full bg-white text-on-surface-variant text-xs font-bold hover:bg-surface-variant">1M</button>
+<button class="px-4 py-1 rounded-full bg-white text-on-surface-variant text-xs font-bold hover:bg-surface-variant">3M</button>
+<button class="px-4 py-1 rounded-full bg-white text-on-surface-variant text-xs font-bold hover:bg-surface-variant">1Y</button>
+<button class="px-4 py-1 rounded-full bg-white text-on-surface-variant text-xs font-bold hover:bg-surface-variant">ALL</button>
+</div>
+</div>
+<!-- Mock Chart Area -->
+<div class="h-64 w-full flex items-end gap-1 relative">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10">
+<div class="w-full h-px bg-on-surface"></div>
+<div class="w-full h-px bg-on-surface"></div>
+<div class="w-full h-px bg-on-surface"></div>
+<div class="w-full h-px bg-on-surface"></div>
+</div>
+<!-- Simplified Visual Graph Bars/Area -->
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[40%] rounded-t-lg transition-all duration-500 hover:h-[45%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[45%] rounded-t-lg transition-all duration-500 hover:h-[50%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[42%] rounded-t-lg transition-all duration-500 hover:h-[47%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[55%] rounded-t-lg transition-all duration-500 hover:h-[60%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[65%] rounded-t-lg transition-all duration-500 hover:h-[70%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[60%] rounded-t-lg transition-all duration-500 hover:h-[65%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[75%] rounded-t-lg transition-all duration-500 hover:h-[80%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[85%] rounded-t-lg transition-all duration-500 hover:h-[90%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[80%] rounded-t-lg transition-all duration-500 hover:h-[85%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary-container h-[95%] rounded-t-lg transition-all duration-500 hover:h-[100%]"></div>
+</div>
+<div class="flex justify-between mt-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest px-2">
+<span>JAN</span>
+<span>FEB</span>
+<span>MAR</span>
+<span>APR</span>
+<span>MAY</span>
+<span>JUN</span>
+<span>JUL</span>
+<span>AUG</span>
+<span>SEP</span>
+<span>OCT</span>
+</div>
+</section>
+<!-- Asset Breakdown Bento Grid -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="font-headline text-2xl font-bold">Asset Breakdown</h3>
+<button class="text-tertiary font-bold flex items-center gap-1 hover:underline">
+                        Explore Full Universe <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Tech Equities Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border-l-8 border-primary relative overflow-hidden group hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+</div>
+<span class="text-4xl font-black text-on-surface/5 absolute -right-2 -top-2 select-none group-hover:text-primary/10 transition-colors">45%</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-1">Global Tech</h4>
+<p class="text-on-surface-variant text-sm mb-6">High-growth software &amp; AI</p>
+<div class="space-y-1 mb-8">
+<span class="text-2xl font-black text-on-surface">฿1,926,967</span>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[45%] h-full bg-primary"></div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container text-primary font-bold rounded-xl hover:bg-primary hover:text-on-primary transition-colors">View Details</button>
+</div>
+<!-- Green Energy Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border-l-8 border-secondary-fixed relative overflow-hidden group hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">eco</span>
+</div>
+<span class="text-4xl font-black text-on-surface/5 absolute -right-2 -top-2 select-none group-hover:text-secondary/10 transition-colors">30%</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-1">Sustainable Energy</h4>
+<p class="text-on-surface-variant text-sm mb-6">Wind, Solar &amp; EV Infrastructure</p>
+<div class="space-y-1 mb-8">
+<span class="text-2xl font-black text-on-surface">฿1,284,645</span>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[30%] h-full bg-secondary"></div>
+</div>
+</div>
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container font-bold rounded-xl hover:bg-secondary hover:text-on-secondary transition-colors">View Details</button>
+</div>
+<!-- Emerging Markets Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border-l-8 border-tertiary relative overflow-hidden group hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container text-3xl">public</span>
+</div>
+<span class="text-4xl font-black text-on-surface/5 absolute -right-2 -top-2 select-none group-hover:text-tertiary/10 transition-colors">25%</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-1">Emerging Markets</h4>
+<p class="text-on-surface-variant text-sm mb-6">SEA &amp; LATAM growth stocks</p>
+<div class="space-y-1 mb-8">
+<span class="text-2xl font-black text-on-surface">฿1,070,538</span>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[25%] h-full bg-tertiary"></div>
+</div>
+</div>
+<button class="w-full py-3 bg-tertiary-container text-on-tertiary-container font-bold rounded-xl hover:bg-tertiary hover:text-on-tertiary transition-colors">View Details</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Component -->
+<footer class="w-full rounded-t-[2rem] mt-12 py-12 px-8 flex flex-col items-center justify-center gap-6 border-t border-[#d69db6]/15 bg-[#fff4f6] dark:bg-slate-950">
+<div class="flex gap-10">
+<a class="text-[#7c4d64] dark:text-slate-500 font-['Manrope'] text-xs uppercase tracking-widest hover:text-[#b60051] dark:hover:text-pink-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-[#7c4d64] dark:text-slate-500 font-['Manrope'] text-xs uppercase tracking-widest hover:text-[#b60051] dark:hover:text-pink-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-[#7c4d64] dark:text-slate-500 font-['Manrope'] text-xs uppercase tracking-widest hover:text-[#b60051] dark:hover:text-pink-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Cookie Settings</a>
+</div>
+<p class="text-[#7c4d64] dark:text-slate-500 font-['Manrope'] text-xs uppercase tracking-widest opacity-60">© 2024 Steward Financial. Stay Energetic!</p>
+</footer>
+</main>
+<!-- Floating Steward Advisor (FAB Alternative) -->
+<div class="fixed bottom-10 right-10 z-50 group">
+<div class="absolute bottom-full right-0 mb-4 w-64 bg-surface-container-lowest p-4 rounded-lg shadow-2xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all border border-surface-container pointer-events-none">
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary animate-ping"></div>
+<p class="text-sm font-semibold">Steward is analyzing the market...</p>
+</div>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Tech sectors are showing strong momentum. Click me for a quick report!</p>
+</div>
+<button class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-2xl flex items-center justify-center overflow-hidden hover:scale-110 transition-transform active:scale-95">
+<img class="w-10 h-10 object-contain" data-alt="close up of energetic pink bird mascot face looking through a magnifying glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMuBKtEIeOBzEBKJySF2slVQVYXY4KAjrpHehL8fSsGqkbG51--_vu6pSOrPM3ZlDYrCn7S8o_ZRHY-wqRcMNr7WHel9QAlXNeOsATuJCFAUEd3Mfs2cxb0n3GB1uC7ZfFDtIIOqC6_ZdocdsFu4eUlYe2ggJ6_CapYESuC1L3xqSAKg7TNaC3YEmyIGT0E8KTUZdf-aUz1aLg_Xnb948KiWJofGfj4z1gEK0JEtc_JVwBP1lGwMxMM1amsVIJQM4Lzkwo1-uRJs1s"/>
+</button>
+</div>
+</body></html>
